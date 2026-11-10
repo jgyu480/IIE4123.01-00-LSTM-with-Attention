@@ -1,0 +1,22 @@
+{
+  "best_epoch": 20,
+  "best_val_MSE_scaled": 0.04186434339690995,
+  "baseline": {
+    "MAE": 4.377993722465676,
+    "RMSE": 8.194440724420437,
+    "high_RMSE": 24.709551231250742,
+    "total_exceedance_MAE": 18.627082215435003,
+    "peak_hour_MAE": 2.318681318681319,
+    "high_recall": 0.7117117117117117,
+    "false_positive_rate": 0.019278828989646554
+  },
+  "previous_week": {
+    "MAE": 7.490462901671245,
+    "RMSE": 12.42740555627882,
+    "high_RMSE": 31.91384500115384,
+    "total_exceedance_MAE": 24.2418243725275,
+    "peak_hour_MAE": 3.208791208791209,
+    "high_recall": 0.18618618618618618,
+    "false_positive_rate": 0.032250386766630966
+  }
+}

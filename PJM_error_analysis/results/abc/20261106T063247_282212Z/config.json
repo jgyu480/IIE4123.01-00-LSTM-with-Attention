@@ -1,0 +1,45 @@
+{
+  "a_run": "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/baseline/20261106T052748_704716Z",
+  "a_config": {
+    "markets": [
+      "PJM",
+      "FR"
+    ],
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "epochs": 100,
+    "patience": 10,
+    "batch_size": 32,
+    "lr": 0.001,
+    "val_days": 364,
+    "test_days": 364,
+    "threads": 4,
+    "device": "cpu",
+    "check_only": false,
+    "torch": "2.15.0",
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "python": "3.13.9",
+    "architecture": "LSTM(3,64,1) + forecast(48) + weekday(7); MLP(119,64,24); MSE"
+  },
+  "variants": [
+    "attention",
+    "uniform",
+    "no_price"
+  ],
+  "k_grid": [
+    3,
+    5,
+    10,
+    20
+  ],
+  "retrieval": "Frozen A best encoder; train-feature-standardized cosine; candidates fixed for B/C.",
+  "case_pool": "Train: strictly earlier training days. Validation/test: training days only.",
+  "C_training": "From A initial_state, not trained A checkpoint. Shared LSTM trained on current and retrieved inputs.",
+  "selection": "B k selected by validation MSE and shared across C variants. Early stopping uses validation MSE only.",
+  "empty_pool": "First training day: zero context; all A training targets retained.",
+  "capacity": "A/C common initial weights match; C has extra parameters. Uniform control isolates attention weighting."
+}

@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "a_run": "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/baseline/20261106T052748_704716Z",
+  "bc_run": "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/abc/20261106T063247_282212Z",
+  "a_config": {
+    "markets": [
+      "PJM",
+      "FR"
+    ],
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "epochs": 100,
+    "patience": 10,
+    "batch_size": 32,
+    "lr": 0.001,
+    "val_days": 364,
+    "test_days": 364,
+    "threads": 4,
+    "device": "cpu",
+    "check_only": false,
+    "torch": "2.15.0",
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "python": "3.13.9",
+    "architecture": "LSTM(3,64,1) + forecast(48) + weekday(7); MLP(119,64,24); MSE"
+  },
+  "markets": [
+    "PJM"
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "models": [
+    "D_blend",
+    "E_price_attention",
+    "F_time_mean",
+    "F_time_attention",
+    "G_direct_lags"
+  ],
+  "lambda_grid": [
+    0.0,
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "versions": {
+    "torch": "2.15.0",
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "python": "3.13.9"
+  },
+  "file_sha256": {
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/train_01_baseline.py": "4c66ccb17c24065f6ff50324a9047adfab0088c50203e0a86df9f3a50ce22736",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/train_02_bc.py": "76b530f21b7b4de9f11115ad86c0084c19e3f7ab6fa5850ab1ebf9725d8fb7d4",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/train_03_candidates.py": "706d346997e5e7953c58bbd38e554c5d3f793a97f7e20193c1689741ace3310d",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/data/PJM.csv": "8596cff7a87cf47f9ee2215bd2af9fc8d6950d57339de9e06c87bad2efd407c6",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/baseline/20261106T052748_704716Z/PJM/seed_42/best_model.pt": "428ed135b7ff48c4ad617db915bdc3bb9c1c09fa1614af7388fee670972909ce",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/baseline/20261106T052748_704716Z/PJM/seed_42/initial_state.pt": "75a98c3778ff3beb8a514d416855cd6ce34a9792f5d47ece3c3e14be54b7edd2",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/baseline/20261106T052748_704716Z/PJM/seed_42/preprocessing.json": "0bd7b231f2aa2c620b26a0d7c53b3b7154ca3d3298c9bb4c5fa6542cd34fee26",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/baseline/20261106T052748_704716Z/PJM/seed_42/metrics.json": "34f2d6ef169a362e30ff636fd4540b7bd88db4e91d75ceede2b98b0a8c78a691",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/abc/20261106T063247_282212Z/PJM/seed_42/candidate_indices.npz": "45fdd5e655f002cbda782628ad447632f0c99cad07bbdcf3760f64739bd38889",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/abc/20261106T063247_282212Z/PJM/seed_42/retrieval.json": "d01ddb1beb39c4c6cc523cde32d97d07681180fb5fdac5878f2d9033eb1ee31c",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/abc/20261106T063247_282212Z/PJM/seed_42/metrics.json": "9a91f71fbef397f6c621f70772fc27f96f8bb8210014ce9b9f0e1db9ad955672",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/abc/20261106T063247_282212Z/PJM/seed_42/preprocessing.json": "0bd7b231f2aa2c620b26a0d7c53b3b7154ca3d3298c9bb4c5fa6542cd34fee26",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/baseline/20261106T052748_704716Z/PJM/seed_43/best_model.pt": "c8feaacaa08465a8195a458b0bc1ab2cefc4a393fe89e485e99e156a1b8c50e5",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/baseline/20261106T052748_704716Z/PJM/seed_43/initial_state.pt": "101eec81d74c47c4ddd2e78ee3e563f83b6b04bf2c7a639ba3187583ca049cca",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/baseline/20261106T052748_704716Z/PJM/seed_43/preprocessing.json": "0bd7b231f2aa2c620b26a0d7c53b3b7154ca3d3298c9bb4c5fa6542cd34fee26",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/baseline/20261106T052748_704716Z/PJM/seed_43/metrics.json": "771dd5dd103cf62333530574cb9c8d2da5bb58e7144425b7dabbaec586bfc9a9",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/abc/20261106T063247_282212Z/PJM/seed_43/candidate_indices.npz": "d85d4045a6f1056cfafd55af1d3873fdac40e43c011deab439d2966255567a21",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/abc/20261106T063247_282212Z/PJM/seed_43/retrieval.json": "a399eeb6c5b481bb49bb798607602dbf9e8ad987ccb60abb953bede692a34c87",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/abc/20261106T063247_282212Z/PJM/seed_43/metrics.json": "dfdc8411287bcfe80c2f0979031958f160b77ad505ae15bc8aa6398f38d09616",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/abc/20261106T063247_282212Z/PJM/seed_43/preprocessing.json": "0bd7b231f2aa2c620b26a0d7c53b3b7154ca3d3298c9bb4c5fa6542cd34fee26",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/baseline/20261106T052748_704716Z/PJM/seed_44/best_model.pt": "33d1d0ef4622d3647294307595d4a8b6ed31f5f6abb5b41a1cee9be898b7973d",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/baseline/20261106T052748_704716Z/PJM/seed_44/initial_state.pt": "084d33893228fcbcef286756f6f51c66ff8d727f8bb4ea0703f7e92e9e812698",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/baseline/20261106T052748_704716Z/PJM/seed_44/preprocessing.json": "0bd7b231f2aa2c620b26a0d7c53b3b7154ca3d3298c9bb4c5fa6542cd34fee26",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/baseline/20261106T052748_704716Z/PJM/seed_44/metrics.json": "92ae7c6d6861586d848bea8de3e606cf40cf5187f624c39915ed92cb0404643a",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/abc/20261106T063247_282212Z/PJM/seed_44/candidate_indices.npz": "60dee302525d8b7ede346e07827fd5ddd7627c50b98f7826a1609fd1b35b41f3",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/abc/20261106T063247_282212Z/PJM/seed_44/retrieval.json": "8f38adf0dc2fb7662c0daf1c63647780baa46361f377ab005c7d2f362b9d5781",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/abc/20261106T063247_282212Z/PJM/seed_44/metrics.json": "cb4de3f3ca4792dd56ab87e8af4a21211ad37f803d0234ec77b9d6ba16a931f7",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/abc/20261106T063247_282212Z/PJM/seed_44/preprocessing.json": "0bd7b231f2aa2c620b26a0d7c53b3b7154ca3d3298c9bb4c5fa6542cd34fee26",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/baseline/20261106T052748_704716Z/config.json": "90566ca5d3964f4a3f3b230f904bd735ca904f55b5ddd70971f4f6c6e5cbbb61",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/abc/20261106T063247_282212Z/config.json": "31b3e00ff1b5ba5ba30f6aa66421cbaa1bdc09b2b0f2f3f45370899e930d6d4f",
+    "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/abc/20261106T063247_282212Z/metrics_all_seeds.csv": "565cb0ce30bce209d59487293253e667956c8d47e2de1a27557cd4e4515d2923"
+  },
+  "protocol": "D/E use frozen trained A and B-selected candidates. F/G start from A initial weights. MSE; A optimizer/epochs/early stopping. E training mix=.25; validation selects epoch and mixture jointly. No test selection.",
+  "resume": "Completed model folders are skipped; interrupted model restarts from its initial state."
+}

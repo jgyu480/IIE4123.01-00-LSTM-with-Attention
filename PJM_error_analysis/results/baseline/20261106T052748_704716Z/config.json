@@ -1,0 +1,25 @@
+{
+  "markets": [
+    "PJM",
+    "FR"
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "epochs": 100,
+  "patience": 10,
+  "batch_size": 32,
+  "lr": 0.001,
+  "val_days": 364,
+  "test_days": 364,
+  "threads": 4,
+  "device": "cpu",
+  "check_only": false,
+  "torch": "2.15.0",
+  "numpy": "2.5.4",
+  "pandas": "2.3.3",
+  "python": "3.13.9",
+  "architecture": "LSTM(3,64,1) + forecast(48) + weekday(7); MLP(119,64,24); MSE"
+}
