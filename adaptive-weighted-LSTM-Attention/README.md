@@ -123,7 +123,7 @@ adaptive-weighted-LSTM-Attention/
 
 데이터는 `../PJM_error_analysis/data/PJM.csv`를 참조한다.
 
-## 실행
+## 실행 -> 확인용
 
 ```bash
 python -m venv ../.venv
