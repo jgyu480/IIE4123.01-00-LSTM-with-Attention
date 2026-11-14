@@ -94,9 +94,18 @@ seed 42–46. 아래 수치는 seed 5개 평균. 유의성은 seed 평균 예측
 - 2017에서 게이트 MAE는 seed 평균 예측 기준 A보다 1.3% 높고(유의하지 않음), 신뢰구간 상한은 +3.6%다.
 - 2018 테스트의 급락일은 2일뿐이다.
 
-### 다음 단계: 학습형 게이트 (예정)
+### 학습형 게이트 (구현, 전체 실행 전)
 
-α_d = sigmoid(w · x_d + b)인 로지스틱 게이트. 결합 예측의 제곱오차를 최소화하도록 학습하며, A와 C의 학습 외(OOF) 예측(2014–2016 fold + 검증 연도)이 필요하다. 입력은 전날 변동성, 최근 가격 수준 변화, 수요 예보 변화, 두 모델 예측 차이, C의 어텐션 엔트로피.
+> α_d = sigmoid(w · x_d + b), ŷ_d = α_d · ŷ_LSTM + (1 − α_d) · ŷ_CaseAttn
+
+- **학습 데이터:** A와 C가 모두 학습 외 예측인 날만 쓴다. 학습 기간 블록은 fold 모델 예측이고, 검증 연도는 본 모델 예측이다. 테스트 날은 학습에 쓰지 않는다.
+- **C의 fold 모델:** `05_train_case_attn.py`가 A와 같은 블록으로 학습한다. 각 fold는 블록 이전 날만 학습하며, 그 fold의 표준화, fold LSTM 특징으로 한 검색(후보도 블록 이전 날), fold LSTM 초기값, 본 C의 k, 고정 에폭(본 C의 best epoch)을 쓴다. 이 변경 뒤에도 본 C 결과는 이전 코드와 같다.
+- **입력(학습 날 기준 표준화):** log(1+전날 변동성), 최근 가격 수준 변화(D−1 평균 − 7일 평균, 부호 로그), 계통·지역 수요 예보 변화율, log(1+A·C 예측 차이), C의 어텐션 엔트로피 / log k.
+- **손실:** 결합 예측의 제곱오차 + 1e-3·|w|²이다. 전체 배치 L-BFGS로 학습한다. L2 계수는 실험 전에 고정했고 튜닝하지 않는다.
+- **두 가지 버전:**
+  - `Gate-learn`: 주 모델. OOF 블록과 검증 연도로 학습한다.
+  - `Gate-learn-val`: 민감도 확인용. 검증 연도만으로 학습한다. 진단에서 본 것처럼 fold 모델(학습 데이터가 적음)은 오차 성질이 본 모델과 다르다. 특히 fold 1은 2014년 1월 한파 구간을 포함한다. 이 차이가 게이트를 왜곡하는지 보기 위한 버전이다.
+- 결과는 `gate_learn` 단계에 LSTM, CaseAttn, Blend-val, Gate-rule과 함께 저장한다. `03_summarize.py --stage gate_learn --references LSTM CaseAttn Gate-rule`로 비교한다.
 
 ## 폴더 구조
 
@@ -113,10 +122,11 @@ adaptive-weighted-LSTM-Attention/
 ├── scripts/
 │   ├── 01_make_oof.py         # LSTM 본 모델 + 시간순 fold 모델, OOF 잔차
 │   ├── 02_res_knn.py          # 1단계 잔차 보정과 대조군
-│   ├── 03_summarize.py        # seed 요약, 부트스트랩 (--stage res_knn | gate)
+│   ├── 03_summarize.py        # seed 요약, 부트스트랩 (--stage res_knn | gate | gate_learn)
 │   ├── 04_diagnose_crash.py   # 급락일 진단 (학습 기간만)
-│   ├── 05_train_case_attn.py  # CaseAttn 학습
+│   ├── 05_train_case_attn.py  # CaseAttn 본 모델 + 시간순 fold 모델(OOF 예측)
 │   ├── 06_gate.py             # 고정 α 결합, 규칙 기반 게이트
+│   ├── 07_learned_gate.py     # 학습형(로지스틱) 게이트
 │   └── smoke_test.sh          # 짧은 전체 점검
 └── results/                   # 실행 결과 (git 제외)
 ```
@@ -141,9 +151,11 @@ DEVICE=cuda bash scripts/smoke_test.sh          # 1 seed, 2 에폭 점검
 ../.venv/bin/python scripts/05_train_case_attn.py --device cuda
 ../.venv/bin/python scripts/06_gate.py
 ../.venv/bin/python scripts/03_summarize.py --stage gate --references LSTM CaseAttn
+../.venv/bin/python scripts/07_learned_gate.py
+../.venv/bin/python scripts/03_summarize.py --stage gate_learn --references LSTM CaseAttn Gate-rule
 ```
 
 - 위 수치는 맥 CPU에서 얻었다. CPU와 CUDA는 같은 seed라도 결과가 조금 다르므로, 비교표에 들어가는 실행은 모두 한 기기·한 장치에서 한다.
-- CUDA 실행은 아직 검증하지 않았다. 먼저 `smoke_test.sh`로 확인한다.
-- Windows에서는 WSL에서 실행하거나 `PYTHON` 환경변수로 파이썬 경로를 지정한다.
+- CUDA 실행은 WSL Ubuntu(torch 2.13 + CUDA 13.0, RTX 3060)에서 `smoke_test.sh`로 확인했다. 같은 입력이면 다시 실행해도 결과가 비트 단위까지 같다.
+- Windows에서는 WSL에서 실행하거나 `PYTHON` 환경변수로 파이썬 경로를 지정한다(예: `PYTHON=~/miniconda3/envs/<env>/bin/python DEVICE=cuda bash scripts/smoke_test.sh`).
 - 결과와 가중치(`results/`, `*.pt`)는 git에 올리지 않으므로 공유 드라이브에 따로 보관한다.

@@ -1,4 +1,4 @@
-"""Summarize a stage (res_knn or gate) across seeds.
+"""Summarize a stage (res_knn, gate or gate_learn) across seeds.
 
 Writes to results/<tag>/<split>/<stage>_*.csv:
   per_seed    per-seed test metrics
@@ -78,7 +78,7 @@ def run(split, args):
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("--stage", default="res_knn", choices=["res_knn", "gate"])
+    p.add_argument("--stage", default="res_knn", choices=["res_knn", "gate", "gate_learn"])
     p.add_argument("--references", nargs="+", default=["LSTM"])
     p.add_argument("--splits", nargs="+", default=["split2_2018", "split1_2017"], choices=list(data.SPLITS))
     p.add_argument("--tag", default="step1")

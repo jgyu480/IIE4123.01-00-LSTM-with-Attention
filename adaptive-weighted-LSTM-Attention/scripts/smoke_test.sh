@@ -13,5 +13,7 @@ rm -rf results/smoke
 "$PY" scripts/05_train_case_attn.py --tag smoke --seeds 42 --epochs 2 --device "$DEVICE"
 "$PY" scripts/06_gate.py --tag smoke --seeds 42
 "$PY" scripts/03_summarize.py --tag smoke --stage gate --references LSTM CaseAttn --n-boot 200
+"$PY" scripts/07_learned_gate.py --tag smoke --seeds 42
+"$PY" scripts/03_summarize.py --tag smoke --stage gate_learn --references LSTM CaseAttn Gate-rule --n-boot 200
 rm -rf results/smoke
 echo "SMOKE OK ($DEVICE)"

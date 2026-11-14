@@ -119,9 +119,21 @@ def _state(model):
     return {k: v.detach().cpu().clone() for k, v in model.state_dict().items()}
 
 
+def attention_entropy(weights, mask):
+    """Attention entropy per day, normalized by log(number of valid cases) to [0, 1]."""
+    w = np.clip(weights, 1e-12, 1.0)
+    n = np.asarray(mask).sum(1)
+    h = -(weights * np.log(w)).sum(1)
+    return np.where(n > 1, h / np.log(np.maximum(n, 2)), 0.0)
+
+
 def train(initial, seed, tensors, ids, mask, ntrain, nval, device, folder, *,
           epochs=100, patience=10, batch_size=32, lr=1e-3, log_prefix=""):
-    """Returns scaled predictions for validation and test days, test attention, and info."""
+    """Returns scaled predictions and attention for validation and test days, and info.
+
+    With nval > 0: early stopping on validation MSE (as train_02). With nval == 0 (fold models):
+    train exactly `epochs` epochs and keep the last weights; validation outputs are empty.
+    "Test" days are all days after ntrain + nval."""
     seed_all(seed)
     model = CaseModel(initial).to(device)
     original = Baseline().to(device)          # same RNG consumption and init check as train_02
@@ -154,6 +166,11 @@ def train(initial, seed, tensors, ids, mask, ntrain, nval, device, folder, *,
             optimizer.step()
             total += loss.item() * target.numel()
             count += target.numel()
+        if nval == 0:
+            log.append({"epoch": epoch, "train_MSE_scaled": total / count})
+            pd.DataFrame(log).to_csv(folder / "history.csv", index=False)
+            print(f"{log_prefix} epoch={epoch:03d} train={total / count:.6f}", flush=True)
+            continue
         val_loss, _, _ = evaluate(model, val_loader, tensors, ids, mask, device)
         log.append({"epoch": epoch, "train_MSE_scaled": total / count, "val_MSE_scaled": val_loss})
         pd.DataFrame(log).to_csv(folder / "history.csv", index=False)
@@ -165,7 +182,14 @@ def train(initial, seed, tensors, ids, mask, ntrain, nval, device, folder, *,
             stale += 1
         if stale >= patience:
             break
+    if nval == 0:
+        best, best_epoch = None, epochs
+        torch.save(_state(model), folder / "best_model.pt")
     model.load_state_dict(torch.load(folder / "best_model.pt", map_location="cpu", weights_only=True))
-    _, val_pred, _ = evaluate(model, val_loader, tensors, ids, mask, device)
+    k = ids.shape[1]
+    if nval:
+        _, val_pred, val_weights = evaluate(model, val_loader, tensors, ids, mask, device)
+    else:
+        val_pred, val_weights = np.zeros((0, 24)), np.zeros((0, k), dtype=np.float32)
     _, test_pred, test_weights = evaluate(model, test_loader, tensors, ids, mask, device)
-    return val_pred, test_pred, test_weights, {"best_epoch": best_epoch, "best_val_MSE_scaled": best}
+    return val_pred, test_pred, val_weights, test_weights, {"best_epoch": best_epoch, "best_val_MSE_scaled": best}
