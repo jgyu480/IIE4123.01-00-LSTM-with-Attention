@@ -7,7 +7,13 @@ All on seed-averaged predictions; ensemble weights only from validation days (gr
   3. Test comparison: A, B, C, Gate-rule(A,C), LEAR and LEAR ensembles.
      Control: LEAR+A (no attention) vs LEAR+C (attention) isolates the case-attention module.
   4. Paired weekly block bootstrap (diff < 0 = model better than reference), also outside the
-     January window for split2 (test start 2017-12-26 .. 2018-01-31).
+     extreme-event windows.
+
+Extreme events (any market): data.extreme_days (target-day mean minus previous 7-day mean outside the
+training-day 2.5% / 97.5% quantiles; spikes and drops). Flagged test days within 7 days of each other
+form one event; the event window spans its first to last flagged day. `ext_*` columns use those
+windows, `rest_*` / `noExt_*` the other test days. For PJM split2 this is 2017-12-28 .. 2018-01-20 plus
+one single day.
 
 B = mean actual price of the k retrieved days saved by 05 (candidate_ids / candidate_mask), as in
 train_02_bc.py. LEAR from 08_lear.py (main LEAR = average of its windows).
@@ -87,15 +93,24 @@ def run(split, args):
     P, truth, days, nseeds = load(split, args.out)
     V, T, yv, y = P["val"], P["test"], truth["val"], truth["test"]
     E = {k: p - y for k, p in T.items()}
-    jan = (days <= "2018-01-31") if split == "split2_2018" else np.zeros(len(days), bool)
+    m = data.load(split, args.csv)
+    n0 = m.ntrain + m.nval
+    assert len(m.days) - n0 == len(days) and m.days[n0] == days[0], "CSV does not match the results"
+    flagged = data.extreme_days(m)[0][n0:]
+    spans = data.events(flagged)
+    ext = np.zeros(len(days), bool)                       # extreme-event windows
+    for a, b in spans:
+        ext[a:b + 1] = True
     print(f"\n========== {split}: {nseeds} seeds, test {days[0]:%Y-%m-%d} ~ {days[-1]:%Y-%m-%d} ==========")
+    print(f"extreme events in test: {len(spans)} ({int(flagged.sum())} flagged days, {int(ext.sum())} window days): "
+          + ", ".join(f"{days[a]:%Y-%m-%d}" + ("" if a == b else f"~{days[b]:%m-%d}") for a, b in spans))
 
     # 1. A/B/C diversity (test)
     abc = list("ABC")
     div = pd.DataFrame([[corr(E[a], E[b]) for b in abc] for a in abc], abc, abc)
-    if jan.any():
-        div_nj = pd.DataFrame([[corr(E[a][~jan], E[b][~jan]) for b in abc] for a in abc], abc, abc)
-        div = pd.concat({"all": div, "outside_Jan": div_nj}, axis=1)
+    if ext.any():
+        div_nj = pd.DataFrame([[corr(E[a][~ext], E[b][~ext]) for b in abc] for a in abc], abc, abc)
+        div = pd.concat({"all": div, "outside_ext": div_nj}, axis=1)
     div.to_csv(base / "ensemble_diversity.csv")
     print("\n[1] hourly error correlation, test\n" + div.round(3).to_string())
 
@@ -118,14 +133,20 @@ def run(split, args):
         name = "+".join(members)
         models[name] = combine(w, [T[k] for k in members])
         weights[name] = dict(zip(members, map(float, w)))
+    # Pre-registered switching rule (PREREG_NP.md, H3): LEAR alone on ordinary days; 0.5 LEAR + 0.5 A when
+    # the previous day's price std exceeds the training-day 90% quantile (same signal as Gate-rule).
+    vol = data.regime_features(m)[:, 1]
+    volatile = (vol[n0:] > np.quantile(vol[:m.ntrain], 0.90))[:, None]
+    models["Switch(LEAR,A)"] = np.where(volatile, 0.5 * T["LEAR"] + 0.5 * T["A"], T["LEAR"])
+    weights["Switch(LEAR,A)"] = {"volatile_test_days": int(volatile.sum())}
     rows = {}
     for name, p in models.items():
         e = p - y
         r = {"MAE": np.abs(e).mean(), "RMSE": np.sqrt((e ** 2).mean()),
              "corr_LEAR": corr(e, E["LEAR"]), "corr_C": corr(e, E["C"])}
-        if jan.any():
-            r.update({"Jan_MAE": np.abs(e[jan]).mean(), "Jan_RMSE": np.sqrt((e[jan] ** 2).mean()),
-                      "rest_MAE": np.abs(e[~jan]).mean(), "rest_RMSE": np.sqrt((e[~jan] ** 2).mean())})
+        if ext.any():
+            r.update({"ext_MAE": np.abs(e[ext]).mean(), "ext_RMSE": np.sqrt((e[ext] ** 2).mean()),
+                      "rest_MAE": np.abs(e[~ext]).mean(), "rest_RMSE": np.sqrt((e[~ext] ** 2).mean())})
         rows[name] = r
     table = pd.DataFrame(rows).T
     table.to_csv(base / "ensemble_test.csv")
@@ -134,16 +155,17 @@ def run(split, args):
 
     # 4. bootstrap
     pairs = [("LEAR+C", "LEAR+A"), ("LEAR", "A"), ("LEAR", "C"),
-             ("LEAR+A", "LEAR"), ("LEAR+C", "LEAR"), ("LEAR+B", "LEAR"), ("LEAR+C", "C"), ("A+B+C", "C")]
+             ("LEAR+A", "LEAR"), ("LEAR+C", "LEAR"), ("LEAR+B", "LEAR"), ("LEAR+C", "C"), ("A+B+C", "C"),
+             ("Switch(LEAR,A)", "LEAR"), ("Switch(LEAR,A)", "LEAR+A")]
     out = []
     for model, ref in pairs:
         for loss, f in LOSSES.items():
             r = metrics.block_bootstrap(f(models[model] - y), f(models[ref] - y), n_boot=args.n_boot)
             row = {"model": model, "vs": ref, "loss": loss, **r}
-            if jan.any():
-                r2 = metrics.block_bootstrap(f(models[model][~jan] - y[~jan]), f(models[ref][~jan] - y[~jan]),
+            if ext.any():
+                r2 = metrics.block_bootstrap(f(models[model][~ext] - y[~ext]), f(models[ref][~ext] - y[~ext]),
                                              n_boot=args.n_boot)
-                row.update({"noJan_diff": r2["diff"], "noJan_ci_low": r2["ci_low"], "noJan_ci_high": r2["ci_high"]})
+                row.update({"noExt_diff": r2["diff"], "noExt_ci_low": r2["ci_low"], "noExt_ci_high": r2["ci_high"]})
             out.append(row)
     boot = pd.DataFrame(out)
     boot.to_csv(base / "ensemble_bootstrap.csv", index=False)
@@ -155,6 +177,7 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("--splits", nargs="+", default=["split2_2018", "split1_2017"], choices=list(data.SPLITS))
     p.add_argument("--tag", default="step1")
+    p.add_argument("--csv", type=Path, default=data.DEFAULT_CSV)
     p.add_argument("--n-boot", type=int, default=5000)
     args = p.parse_args()
     args.out = ROOT / "results" / args.tag

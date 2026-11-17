@@ -94,7 +94,7 @@ seed 42–46. 아래 수치는 seed 5개 평균. 유의성은 seed 평균 예측
 - 2017에서 게이트 MAE는 seed 평균 예측 기준 A보다 1.3% 높고(유의하지 않음), 신뢰구간 상한은 +3.6%다.
 - 2018 테스트의 급락일은 2일뿐이다.
 
-### 학습형 게이트 (구현, 전체 실행 전)
+### 학습형 게이트 (실패)
 
 > α_d = sigmoid(w · x_d + b), ŷ_d = α_d · ŷ_LSTM + (1 − α_d) · ŷ_CaseAttn
 
@@ -106,6 +106,38 @@ seed 42–46. 아래 수치는 seed 5개 평균. 유의성은 seed 평균 예측
   - `Gate-learn`: 주 모델. OOF 블록과 검증 연도로 학습한다.
   - `Gate-learn-val`: 민감도 확인용. 검증 연도만으로 학습한다. 진단에서 본 것처럼 fold 모델(학습 데이터가 적음)은 오차 성질이 본 모델과 다르다. 특히 fold 1은 2014년 1월 한파 구간을 포함한다. 이 차이가 게이트를 왜곡하는지 보기 위한 버전이다.
 - 결과는 `gate_learn` 단계에 LSTM, CaseAttn, Blend-val, Gate-rule과 함께 저장한다. `03_summarize.py --stage gate_learn --references LSTM CaseAttn Gate-rule`로 비교한다.
+
+**결과 (WSL CUDA, seed 5개 평균 예측):**
+
+| 모델 | 2018 MAE | 2018 RMSE | 2018 급락일 MAE | 2017 MAE | 2017 RMSE |
+| --- | --- | --- | --- | --- | --- |
+| Gate-rule | 3.798 | **6.445** | **26.9** | 2.900 | 4.519 |
+| Gate-learn | 3.854 | 6.817 | 31.8 | 2.899 | 4.494 |
+| Gate-learn-val | 3.817 | 6.654 | 30.0 | **2.873** | **4.477** |
+
+- 게이트 가중치는 seed마다 부호가 뒤집혔고, 학습 날과 테스트 날의 평균 α가 거의 같았다. 날마다 α를 바꾸지 못하고 seed별 상수 비율로 굳었다.
+- 2018에서 Gate-learn은 Gate-rule보다 일별 MSE가 유의하게 나빴다. 급락일에도 C 쪽으로 옮겨가지 않았다(급락일 평균 α 0.15~0.97).
+- 원인은 학습할 급변 사례 부족이다. fold 1(2014 블록)의 C RMSE가 약 33으로 손실을 지배했고, 그 오차 성질은 본 모델로 옮겨지지 않았다.
+
+### 앙상블과 LEAR 벤치마크
+
+A·C 오차가 강하게 같이 움직여 앙상블 여지가 없었다(시간별 오차 상관 0.92~0.94, 2018년 1월 제외 시 0.96). B는 다르게 틀렸지만(0.73~0.83) 너무 약해서, 검증 연도로 정한 비중이 0.05였다. 그래서 오류가 다르면서 성능이 비슷한 후보로, 전력가격 예측의 표준 선형 벤치마크 LEAR(Lago et al. 2021)를 추가했다.
+
+- **LEAR (`08_lear.py`):** 시간대별 Lasso이고, 매일 직전 56/84/1092/1456일로 다시 학습한다. 주 LEAR는 네 학습 기간 예측의 평균이다. epftoolbox 패키지 없이 논문 정의대로 scikit-learn으로 구현했고, 공개 벤치마크 수치와는 아직 대조하지 않았다.
+- **사전 기준 (`09_ensemble_analysis.py`, 검증 연도):** A·C와의 오차 상관 0.85 이하, 검증 MAE가 A·C 중 나은 쪽의 5% 이내. LEAR는 두 분할 모두 통과했다(상관 0.57~0.83, MAE 6~24% 더 좋음).
+- **앙상블 비율:** 검증 연도로만 정했다(0.05 단위 격자).
+
+| 모델 (테스트) | 2018 MAE | 2018 RMSE | 2018 1월 MAE | 2017 MAE | 2017 RMSE |
+| --- | --- | --- | --- | --- | --- |
+| A (LSTM) | 4.028 | 7.239 | 9.65 | 2.910 | 4.523 |
+| C (CaseAttn) | 3.752 | 6.248 | 7.91 | 3.013 | 4.640 |
+| LEAR | 3.737 | 6.372 | 9.01 | 2.531 | 4.225 |
+| LEAR + A | **3.454** | **5.625** | **7.26** | **2.473** | **4.104** |
+| LEAR + C | 3.467 | 5.696 | 7.45 | 2.507 | 4.170 |
+
+- LEAR + LSTM 앙상블이 가장 좋았다. 2018에서 LEAR + A와 LEAR + C는 모두 LEAR 단독보다 유의하게 좋았고, 1월(2017-12-26~2018-01-31) 밖에서도 그랬다. LEAR + C는 C 단독보다도 유의하게 좋았다.
+- **사례 어텐션의 기여는 확인되지 않았다.** LEAR + C와 LEAR + A를 비교하면 2018은 유의한 차이가 없고, 2017은 LEAR + A가 유의하게 좋았다. 앙상블 이득은 선형 모델과 LSTM을 섞는 데서 나온 것으로 보인다(LEAR와 A의 오차 상관 0.41).
+- 2018 테스트의 극단 사건은 1월 한파 하나뿐이라, 급변 구간에서 사례 어텐션의 효과는 이 데이터로 판정할 수 없다. 극단 사건이 더 많은 시장(epftoolbox NP, BE, FR, DE)에서 LEAR + A vs LEAR + C를 비교하는 것이 다음 단계다.
 
 ## 폴더 구조
 
@@ -127,7 +159,10 @@ adaptive-weighted-LSTM-Attention/
 │   ├── 05_train_case_attn.py  # CaseAttn 본 모델 + 시간순 fold 모델(OOF 예측)
 │   ├── 06_gate.py             # 고정 α 결합, 규칙 기반 게이트
 │   ├── 07_learned_gate.py     # 학습형(로지스틱) 게이트
-│   └── smoke_test.sh          # 짧은 전체 점검
+│   ├── 08_lear.py             # LEAR 벤치마크 (매일 재학습, CPU)
+│   ├── 09_ensemble_analysis.py  # A·B·C·LEAR 오류 다양성, 사전 기준 검사, 앙상블, LEAR+A vs LEAR+C
+│   ├── 10_export_predictions.py # 앙상블 재료: 모든 모델의 검증·테스트 시간별 예측 CSV, 오차 상관, 점수
+│   └── smoke_test.sh          # 짧은 전체 점검 (08·09 제외)
 └── results/                   # 실행 결과 (git 제외)
 ```
 
@@ -153,7 +188,12 @@ DEVICE=cuda bash scripts/smoke_test.sh          # 1 seed, 2 에폭 점검
 ../.venv/bin/python scripts/03_summarize.py --stage gate --references LSTM CaseAttn
 ../.venv/bin/python scripts/07_learned_gate.py
 ../.venv/bin/python scripts/03_summarize.py --stage gate_learn --references LSTM CaseAttn Gate-rule
+../.venv/bin/python scripts/08_lear.py             # CPU 병렬, 분할·구간당 약 15분 (빠른 점검: --limit 5)
+../.venv/bin/python scripts/09_ensemble_analysis.py
+../.venv/bin/python scripts/10_export_predictions.py   # results/<tag>/<split>/export/
 ```
+
+다른 시장은 `--tag`와 `--csv data/epftoolbox/<NP|BE|FR|DE>.csv`를 01·05·06·08·09·10에 똑같이 넘긴다. 05는 `--skip-folds`를 쓰면 학습형 게이트(07)용 fold 학습을 건너뛴다.
 
 - 위 수치는 맥 CPU에서 얻었다. CPU와 CUDA는 같은 seed라도 결과가 조금 다르므로, 비교표에 들어가는 실행은 모두 한 기기·한 장치에서 한다.
 - CUDA 실행은 WSL Ubuntu(torch 2.13 + CUDA 13.0, RTX 3060)에서 `smoke_test.sh`로 확인했다. 같은 입력이면 다시 실행해도 결과가 비트 단위까지 같다.

@@ -88,7 +88,7 @@ def train_fold(folder, out, m, j, bs, be, k, epochs, seed, args, device):
 def run(split, seed, args, device):
     folder = args.out / split / f"seed_{seed}"
     out = folder / "case_attn"
-    if (out / "oof.npz").exists():
+    if (out / "oof.npz").exists() or (args.skip_folds and (out / "predictions.npz").exists()):
         print(f"skip (done): {out}", flush=True)
         return
     meta = json.loads((folder / "oof_meta.json").read_text(encoding="utf-8"))
@@ -98,6 +98,8 @@ def run(split, seed, args, device):
     mean, std = np.array(meta["scaling_main"]["mean"]), np.array(meta["scaling_main"]["std"])
     T = m.tensors(mean, std)
     info, val_pred, test_pred, val_w, test_w, mask = train_main(folder, out, m, T, mean, std, seed, args, device)
+    if args.skip_folds:                                   # fold C only feeds the learned gate (07)
+        return
 
     n, n0, nv = len(m.days), m.ntrain, m.nval
     source = np.load(folder / "residuals.npz")["source"]
@@ -135,6 +137,8 @@ def main():
     p.add_argument("--lr", type=float, default=1e-3)
     p.add_argument("--device", choices=["cpu", "cuda"], default="cpu")
     p.add_argument("--threads", type=int, default=4)
+    p.add_argument("--skip-folds", action="store_true",
+                   help="main C only (no fold models / oof.npz); enough for 06, 08 and 09, not for 07")
     args = p.parse_args()
     args.out = ROOT / "results" / args.tag
     device = baseline.setup(args.device, args.threads)

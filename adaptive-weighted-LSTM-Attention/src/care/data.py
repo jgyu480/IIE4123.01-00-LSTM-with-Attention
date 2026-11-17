@@ -117,3 +117,32 @@ def eval_masks(m: Market, high_threshold):
     calm = prev_vol <= np.median(prev_vol[val])          # threshold from validation days
     crash = (prev_mean > high_threshold) & (truth.mean(1) < 0.6 * prev_mean)
     return {"calm": calm, "crash": crash}
+
+
+def extreme_days(m: Market, q=0.975):
+    """Extreme days (spikes and drops), comparable across markets. Evaluation only (uses actual prices).
+
+    dev_d = target-day mean price - mean price of the previous 7 days (known at forecast time);
+    extreme when dev_d is above the training-day q quantile or below the 1 - q quantile.
+    Deviation from the recent level, so a sustained level shift is flagged only at its start.
+    Returns (extreme, up, down) boolean arrays over all days.
+    """
+    p = m.raw[:, 0]
+    dev = np.array([p[t:t + 24].mean() - p[t - 168:t].mean() for t in m.starts])
+    train = dev[:m.ntrain]
+    up, down = dev > np.quantile(train, q), dev < np.quantile(train, 1 - q)
+    return up | down, up, down
+
+
+def events(mask, gap=7):
+    """(first, last) day-index pairs of flagged days; > gap unflagged days start a new event."""
+    idx = np.flatnonzero(mask)
+    if not len(idx):
+        return []
+    out, start, prev = [], idx[0], idx[0]
+    for i in idx[1:]:
+        if i - prev > gap:
+            out.append((int(start), int(prev)))
+            start = i
+        prev = i
+    return out + [(int(start), int(prev))]
