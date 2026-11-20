@@ -1,0 +1,103 @@
+
+[설정]
+학습 214일 / 설정선택 71일 / 검증 홀드아웃 72일 / 테스트 364일
+하락 기준: 하루 평균 변화 < -4.285, 상승 기준: > 4.725, 전날 고가격 기준: > 33.622
+위 기준은 모두 학습 구간에서 정했으며 테스트에서 변경하지 않습니다.
+
+[실제 전환 유형별 성능]
+             split         state outcome  days     A_MAE  LEAR_MAE  A_better_day_pct  Recent_MAE  Recent_bias
+validation_holdout           all    drop     8  3.366839  3.539720         62.500000         NaN          NaN
+validation_holdout           all  middle    59  2.291750  2.452883         59.322034         NaN          NaN
+validation_holdout           all    rise     5  2.884008  3.226645         40.000000         NaN          NaN
+validation_holdout high_previous    drop     1  4.893462  3.096958          0.000000         NaN          NaN
+validation_holdout high_previous  middle     1  3.612550  4.128846        100.000000         NaN          NaN
+validation_holdout high_previous    rise     1  4.648496  7.147008        100.000000         NaN          NaN
+              test           all    drop    65  5.875775  4.701370         40.000000    4.953311     4.146251
+              test           all  middle   230  3.148850  2.801817         30.869565    2.577594    -0.091566
+              test           all    rise    69  5.085927  5.946622         59.420290    4.554157    -3.315778
+              test high_previous    drop    25  7.402768  4.449249         40.000000    5.413268     4.081272
+              test high_previous  middle    31  4.813513  4.840871         45.161290    3.748165    -1.357927
+              test high_previous    rise    10 10.407518 15.463829         70.000000    8.622070    -6.303281
+
+[입력으로 전환 / 모델 우열을 구분할 수 있는가]
+        task               features              split  accuracy  balanced_accuracy  macro_F1  AUC_A_wins
+  transition          price_history validation_holdout  0.680556           0.700989  0.557734         NaN
+  transition          price_history               test  0.508242           0.581271  0.500090         NaN
+  transition        price_plus_load validation_holdout  0.722222           0.778955  0.598798         NaN
+  transition        price_plus_load               test  0.601648           0.649833  0.584507         NaN
+  transition      price_load_models validation_holdout  0.791667           0.746186  0.651251         NaN
+  transition      price_load_models               test  0.662088           0.684207  0.640069         NaN
+  transition all_plus_recent_errors validation_holdout  0.791667           0.746186  0.651033         NaN
+  transition all_plus_recent_errors               test  0.656593           0.695726  0.638189         NaN
+  transition    dummy_most_frequent validation_holdout  0.819444           0.333333  0.300254         NaN
+  transition    dummy_most_frequent               test  0.631868           0.333333  0.258137         NaN
+  transition       dummy_stratified validation_holdout  0.666667           0.271186  0.275862         NaN
+  transition       dummy_stratified               test  0.513736           0.306615  0.292921         NaN
+model_winner          price_history validation_holdout  0.555556           0.514286  0.500000    0.557143
+model_winner          price_history               test  0.494505           0.501218  0.490056    0.495383
+model_winner        price_plus_load validation_holdout  0.458333           0.445238  0.445388    0.448413
+model_winner        price_plus_load               test  0.538462           0.545081  0.533376    0.542324
+model_winner      price_load_models validation_holdout  0.569444           0.583333  0.569361    0.631746
+model_winner      price_load_models               test  0.497253           0.520360  0.496793    0.508272
+model_winner all_plus_recent_errors validation_holdout  0.583333           0.585714  0.580420    0.620635
+model_winner all_plus_recent_errors               test  0.510989           0.522958  0.508078    0.538893
+model_winner    dummy_most_frequent validation_holdout  0.416667           0.500000  0.294118         NaN
+model_winner    dummy_most_frequent               test  0.620879           0.500000  0.383051         NaN
+model_winner       dummy_stratified validation_holdout  0.527778           0.561905  0.521875         NaN
+model_winner       dummy_stratified               test  0.549451           0.518661  0.518705         NaN
+
+validation_holdout: 전날 고가격 3일, 이후 급락 1일, 그 외 2일
+
+test: 전날 고가격 66일, 이후 급락 25일, 그 외 41일
+
+[고가격 이후 급락일의 특징: 절댓값 상위 8개]
+Empty DataFrame
+Columns: [split, feature, standardized_drop_minus_other, drop_days, other_days]
+Index: []
+split                  feature  standardized_drop_minus_other  drop_days  other_days
+ test              A_mse_last7                       2.960607         25          41
+ test           A_LEAR_abs_gap                      -2.750050         25          41
+ test    A_mean_minus_previous                      -2.293402         25          41
+ test        A_minus_LEAR_mean                      -2.057544         25          41
+ test       last6_vs_prev_mean                      -2.020141         25          41
+ test       A_LEAR_evening_gap                      -1.850403         25          41
+ test      long_minus_previous                      -1.468371         25          41
+ test LEAR_mean_minus_previous                      -1.423779         25          41
+
+[최악의 날짜에서 실제 전환과 사전 신호]
+      date  Recent_RMSE  Recent_bias outcome  previous_high  actual_day_change A_or_LEAR_winner  prev_day_change  last6_vs_prev_mean  system_day_change  A_mean_minus_previous  LEAR_mean_minus_previous  short_minus_long_mean transition__all_plus_recent_errors model_winner__all_plus_recent_errors
+2018-01-06    43.656773    37.561719    drop           True         -53.509593             LEAR        -1.037156           -0.937329       -2023.875000              -0.919106                -30.860202              -1.562242                               drop                                    A
+2018-01-13    21.339244   -16.200021    rise          False          19.594436                A         6.181643            3.286757        6826.750000               5.388095                  2.099061              -1.324677                               rise                                    A
+2018-01-05    20.395220    -4.931717  middle           True          -1.037150             LEAR        11.428196           17.696663        8054.208333              11.583871                -22.509166             -10.989681                               drop                                    A
+2018-01-04    17.420908   -13.428791    rise           True          11.428201                A         0.190731           22.080296       -5309.291667              15.480588                -17.399182              -4.701369                               drop                                    A
+2018-01-07    14.265572    -9.608174    rise          False           7.722491             LEAR       -53.509597           -1.667895       -5430.125000              -2.410921                 -1.097321              -1.983110                               drop                                 LEAR
+2018-01-03    14.229658    -7.206205  middle           True           0.190736                A        27.530879            9.756565       -5520.875000              13.301482                -23.632643              -2.169513                               drop                                    A
+2017-12-29    14.195992   -12.544189    rise           True           6.297438                A        10.654480           11.451087       -4036.250000              -1.316479                -11.602941              -1.262948                               drop                                    A
+2018-01-18    13.593335    12.449274    drop           True         -20.044075             LEAR        10.241368            0.340485       -1421.125000               2.901645                -14.848488               2.448579                               drop                                    A
+2017-12-30    12.932188    10.809868    drop           True         -23.465308             LEAR         6.297445            9.312956       -9102.916667              -9.667420                -17.061099              -0.032596                               drop                                    A
+2018-06-18    12.382856    -4.007069    rise          False           9.720954                A         3.259725            4.886193       15413.291667              10.042717                  2.495929              -2.271317                               rise                                    A
+2018-04-30    12.060151    10.514966    drop          False          -6.318406                A        -2.010881            1.576316        8632.083333               4.222069                  4.533206               0.203419                               rise                                 LEAR
+2017-12-28    11.995806    -8.561735    rise           True          10.654493                A         7.810355            6.309174        5084.875000              10.943297                 -4.393990              -3.956238                               drop                                    A
+
+[클래스별 날짜 수]
+        task              split  label  days    share
+  transition                fit   drop    22 0.102804
+  transition                fit middle   170 0.794393
+  transition                fit   rise    22 0.102804
+  transition               tune   drop    10 0.140845
+  transition               tune middle    53 0.746479
+  transition               tune   rise     8 0.112676
+  transition validation_holdout   drop     8 0.111111
+  transition validation_holdout middle    59 0.819444
+  transition validation_holdout   rise     5 0.069444
+  transition               test   drop    65 0.178571
+  transition               test middle   230 0.631868
+  transition               test   rise    69 0.189560
+model_winner                fit      A    90 0.420561
+model_winner                fit   LEAR   124 0.579439
+model_winner               tune      A    15 0.211268
+model_winner               tune   LEAR    56 0.788732
+model_winner validation_holdout      A    42 0.583333
+model_winner validation_holdout   LEAR    30 0.416667
+model_winner               test      A   138 0.379121
+model_winner               test   LEAR   226 0.620879

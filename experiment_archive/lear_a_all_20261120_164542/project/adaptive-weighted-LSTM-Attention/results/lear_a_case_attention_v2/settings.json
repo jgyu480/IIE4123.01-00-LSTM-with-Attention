@@ -1,0 +1,36 @@
+{
+  "selected": {
+    "EqualCase": {
+      "k": 16,
+      "strength": 1.0
+    },
+    "KernelCase": {
+      "k": 16,
+      "strength": 0.5
+    },
+    "LearnedCase": {
+      "k": 16,
+      "strength": 0.5
+    },
+    "CDelta": {
+      "k": 32,
+      "strength": 1.0
+    }
+  },
+  "learned_metric": [
+    0.9860082790167206,
+    0.8873498636905023,
+    1.081972521116518,
+    1.2078352689615668,
+    1.0062870884453305,
+    0.9808344751330262,
+    0.95145407814651
+  ],
+  "optimizer_message": "Optimization terminated successfully.",
+  "warmup_days": 60,
+  "metric_training_end": "2017-06-26 00:00:00",
+  "selection_start": "2017-06-27 00:00:00",
+  "test_start": "2017-12-26 00:00:00",
+  "protocol": "Previous complete days only; rolling observed-outcome memory",
+  "recent_definition": "14-day hourly weight shrunk toward expanding hourly weight, mix=0.5"
+}

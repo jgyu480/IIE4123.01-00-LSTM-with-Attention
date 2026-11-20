@@ -1,0 +1,49 @@
+기준: 원래 저장된 OriginalRecent
+{
+  "MAE": 3.376507282386465,
+  "RMSE": 5.522583202775918,
+  "bias_pred_minus_actual": 0.05400390745355271
+}
+분석 날짜: 2017-12-26 ~ 2018-12-24
+
+[하루 평균 수준 / 하루 안의 모양]
+{
+  "total_MSE": 30.49892523158271,
+  "daily_level_MSE": 16.016249040411235,
+  "daily_shape_MSE": 14.48267619117147,
+  "daily_level_MSE_share_pct": 52.51414244534048,
+  "daily_shape_MSE_share_pct": 47.485857554659496
+}
+ worst_day_fraction  days  share_of_squared_error_pct  share_of_absolute_error_pct
+               0.01     4                   27.750304                     6.838723
+               0.05    19                   47.843762                    18.759149
+               0.10    37                   59.369897                    28.391538
+
+[오차가 큰 시간대]
+ hour      MAE     RMSE  bias_pred_minus_actual  squared_error_share_pct    A_MAE  LEAR_MAE
+   18 4.530229 7.775997               -0.574644                 8.260692 5.811377  5.142985
+   17 4.856189 7.755694               -0.616495                 8.217611 5.770598  5.312420
+   16 4.236191 6.890412                0.117858                 6.486264 4.912584  4.648547
+   19 4.248325 6.777028               -0.347001                 6.274553 5.311777  4.615281
+    7 3.921540 6.627418                1.079963                 6.000577 5.696927  4.330933
+   20 4.027452 6.466510               -0.113920                 5.712736 4.712624  4.429602
+
+[가중치만 바꿀 때의 사후적 한계: oracle은 실제값을 본 진단값]
+                         method      MAE     RMSE  bias_pred_minus_actual
+                 OriginalRecent 3.376507 5.522583                0.054004
+                              A 4.002994 7.037124                1.008353
+                           LEAR 3.737154 6.372375               -0.691490
+     ORACLE_A_LEAR_convex_bound 2.234846 4.161565                0.074308
+ORACLE_A_four_LEAR_convex_bound 1.689088 3.660854                0.016116
+A와 LEAR가 같은 방향으로 틀린 시간 비율: 74.13%
+그 시간대가 Recent 제곱오차에서 차지하는 비율: 91.25%
+
+[입력의 추가 가치 검사]
+진단용 고정 A+LEAR를 기준으로 학습. OriginalRecent는 test 비교만 표시.
+                        probe   alpha  strength  validation_holdout_MAE  validation_holdout_RMSE  validation_holdout_bias_pred_minus_actual  test_MAE  test_RMSE  test_bias_pred_minus_actual
+                        basic 10000.0       1.0                2.666368                 3.517572                                   0.233259  3.480691   5.590403                    -0.080241
+ basic_plus_future_load_curve 10000.0       1.0                2.684990                 3.540970                                   0.337425  3.465423   5.565467                    -0.014359
+basic_plus_past_6hour_patches 10000.0       1.0                2.674243                 3.523702                                   0.266092  3.458658   5.584336                    -0.067363
+                  all_context 10000.0       1.0                2.694692                 3.548286                                   0.355579  3.445960   5.560846                    -0.016376
+         probe_fixed_baseline     NaN       NaN                2.517470                 3.405878                                   0.218258  3.479684   5.682558                    -0.232268
+               OriginalRecent     NaN       NaN                     NaN                      NaN                                        NaN  3.376507   5.522583                     0.054004

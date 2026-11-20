@@ -1,0 +1,70 @@
+기준: 원래 저장된 OriginalRecent
+{
+  "MAE": 3.376507282386465,
+  "RMSE": 5.522583202775918,
+  "bias_pred_minus_actual": 0.05400390745355271
+}
+분석 날짜: 2017-12-26 ~ 2018-12-24
+設定選択 122日 / BOA設定選択 91日 / 検証holdout 91日 / test 364日
+공통 기준은 재현 Recent, 별도 비교 기준은 OriginalRecent입니다.
+
+[1/4] 하루 수준·시간대별 모양 보정
+[선택] LevelShape_MAE: {'robust': True, 'level_window': 7, 'shape_window': 14, 'level_strength': 0.5, 'shape_strength': 0.5}
+[선택] LevelShape_RMSE: {'robust': True, 'level_window': 7, 'shape_window': 14, 'level_strength': 0.5, 'shape_strength': 0.5}
+
+[2/4] 하루·6시간 평균 회귀와 곡선 조정
+평균 회귀 window=365 alpha=10: 0/728
+평균 회귀 window=365 alpha=10: 120/728
+평균 회귀 window=365 alpha=10: 240/728
+평균 회귀 window=365 alpha=10: 360/728
+평균 회귀 window=365 alpha=10: 480/728
+평균 회귀 window=365 alpha=10: 600/728
+평균 회귀 window=365 alpha=10: 720/728
+평균 회귀 window=365 alpha=100: 0/728
+평균 회귀 window=365 alpha=100: 120/728
+평균 회귀 window=365 alpha=100: 240/728
+평균 회귀 window=365 alpha=100: 360/728
+평균 회귀 window=365 alpha=100: 480/728
+평균 회귀 window=365 alpha=100: 600/728
+평균 회귀 window=365 alpha=100: 720/728
+평균 회귀 window=1092 alpha=10: 0/728
+평균 회귀 window=1092 alpha=10: 120/728
+평균 회귀 window=1092 alpha=10: 240/728
+평균 회귀 window=1092 alpha=10: 360/728
+평균 회귀 window=1092 alpha=10: 480/728
+평균 회귀 window=1092 alpha=10: 600/728
+평균 회귀 window=1092 alpha=10: 720/728
+평균 회귀 window=1092 alpha=100: 0/728
+평균 회귀 window=1092 alpha=100: 120/728
+평균 회귀 window=1092 alpha=100: 240/728
+평균 회귀 window=1092 alpha=100: 360/728
+평균 회귀 window=1092 alpha=100: 480/728
+평균 회귀 window=1092 alpha=100: 600/728
+평균 회귀 window=1092 alpha=100: 720/728
+[선택] Reconcile_MAE: {'mode': 'daily_and_6hour', 'window': 1092, 'ridge_alpha': 10.0, 'rho': 10.0}
+[선택] Reconcile_RMSE: {'mode': 'daily_and_6hour', 'window': 1092, 'ridge_alpha': 10.0, 'rho': 10.0}
+
+[3/4] 편향·결합 비율 동시 보정
+[선택] BiasMix_MAE: {'window': 14, 'regularization': 1.0, 'hour_groups': 4}
+[선택] BiasMix_RMSE: {'window': 14, 'regularization': 1.0, 'hour_groups': 4}
+
+[4/4] BOA 온라인 결합
+[선택] BOA_MAE: {'loss': 'MSE', 'hour_groups': 4, 'members': ['TrainingRecent', 'MeanError28_half', 'LevelShape_MAE', 'Reconcile_MAE', 'BiasMix_MAE']}
+[선택] BOA_RMSE: {'loss': 'MSE', 'hour_groups': 4, 'members': ['TrainingRecent', 'MeanError28_half', 'LevelShape_RMSE', 'Reconcile_RMSE', 'BiasMix_RMSE']}
+
+          method  holdout_MAE  holdout_RMSE  holdout_MSE  holdout_level_MSE  holdout_shape_MSE  test_MAE  test_RMSE  test_MSE  test_level_MSE  test_shape_MSE  gain_vs_OriginalRecent_MAE_pct  gain_vs_OriginalRecent_RMSE_pct
+  LevelShape_MAE     2.469332      3.420320    11.698590           5.562946           6.135644  3.341862   5.515246 30.417937       16.263631       14.154306                        1.026068                         0.132861
+ LevelShape_RMSE     2.469332      3.420320    11.698590           5.562946           6.135644  3.341862   5.515246 30.417937       16.263631       14.154306                        1.026068                         0.132861
+         BOA_MAE     2.479950      3.424642    11.728174           5.565668           6.162506  3.333592   5.508146 30.339677       16.297040       14.042637                        1.270997                         0.261413
+        BOA_RMSE     2.479950      3.424642    11.728174           5.565668           6.162506  3.333592   5.508146 30.339677       16.297040       14.042637                        1.270997                         0.261413
+  TrainingRecent     2.513194      3.439046    11.827038           5.524768           6.302270  3.402695   5.567908 31.001602       16.353662       14.647940                       -0.775576                        -0.820722
+   Reconcile_MAE     2.529341      3.483961    12.137982           5.688164           6.449817  3.399853   5.506215 30.318402       16.257034       14.061368                       -0.691416                         0.296389
+  Reconcile_RMSE     2.529341      3.483961    12.137982           5.688164           6.449817  3.399853   5.506215 30.318402       16.257034       14.061368                       -0.691416                         0.296389
+MeanError28_half     2.562964      3.506497    12.295522           5.587133           6.708388  3.371632   5.539822 30.689624       16.458001       14.231623                        0.144392                        -0.312145
+     BiasMix_MAE     2.561624      3.564326    12.704416           5.884160           6.820256  3.412552   5.657834 32.011083       17.120272       14.890811                       -1.067514                        -2.449045
+    BiasMix_RMSE     2.561624      3.564326    12.704416           5.884160           6.820256  3.412552   5.657834 32.011083       17.120272       14.890811                       -1.067514                        -2.449045
+            LEAR     2.667013      3.575755    12.786022           6.199783           6.586239  3.737154   6.372375 40.607166       23.546869       17.060296                      -10.681048                       -15.387582
+               A     2.667145      3.678852    13.533953           5.644351           7.889602  4.002994   7.037124 49.521114       27.787067       21.734048                      -18.554293                       -27.424499
+  OriginalRecent          NaN           NaN          NaN                NaN                NaN  3.376507   5.522583 30.498925       16.016249       14.482676                        0.000000                         0.000000
+
+완료. 결과 위치: /Users/jgyu480/Projects/IIE4123.01-00-LSTM-with-Attention/adaptive-weighted-LSTM-Attention/results/lear_a_simple_improvements

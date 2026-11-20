@@ -1,0 +1,18 @@
+{
+  "market": "PJM",
+  "seed": 42,
+  "model": "E_price_attention",
+  "source_run": "/Users/jgyu480/1_school/26-2/딥러닝과응용/results/candidates/20261106T084227_743186Z",
+  "best_epoch": 1,
+  "best_val_MSE_scaled": 0.040317309475332276,
+  "lambda": 0.25,
+  "train_seconds": 0.5443347500113305,
+  "parameters": 7918,
+  "MAE": 4.163950849531181,
+  "RMSE": 7.348454261622474,
+  "high_RMSE": 20.307222987388723,
+  "total_exceedance_MAE": 14.906906267845512,
+  "peak_hour_MAE": 2.271978021978022,
+  "high_recall": 0.7297297297297297,
+  "false_positive_rate": 0.019397834106866595
+}

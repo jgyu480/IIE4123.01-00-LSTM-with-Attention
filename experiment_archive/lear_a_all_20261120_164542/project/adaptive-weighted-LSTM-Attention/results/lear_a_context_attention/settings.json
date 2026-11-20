@@ -1,0 +1,22 @@
+{
+  "split": "split2_2018",
+  "validation_prefix_days": 182,
+  "pool_calendar_days": 180,
+  "features": [
+    "prev_mean",
+    "prev_vol",
+    "sys_change_pct"
+  ],
+  "selected": {
+    "Recent": {
+      "k": 14,
+      "gamma": 0.5
+    },
+    "Attention": {
+      "k": 14,
+      "gamma": 0.5
+    }
+  },
+  "test_update": "Only strictly earlier observed days",
+  "hourly_weight_fit": "Continuous constrained least squares"
+}

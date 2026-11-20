@@ -1,0 +1,10 @@
+experiment,description,files,path
+ensemble35_pjm2018,7개 모델 조합 × 5개 결합 방식 = 35개 앙상블 실험,8,project/adaptive-weighted-LSTM-Attention/results/ensemble35_pjm2018
+step1,"A·B·C·LEAR 기본 실험, seed별 체크포인트와 검증·테스트 예측",102,project/adaptive-weighted-LSTM-Attention/results/step1
+lear_a_context_attention,Hourly·Recent·Attention 비교와 OriginalRecent 결과,6,project/adaptive-weighted-LSTM-Attention/results/lear_a_context_attention
+lear_a_case_attention_v2,KernelCase·LearnedCase·CDelta 사례 기반 결합,8,project/adaptive-weighted-LSTM-Attention/results/lear_a_case_attention_v2
+lear_a_neural_attention,MLP·HorizonAttention·WindowAttention·HistoryAttention,34,project/adaptive-weighted-LSTM-Attention/results/lear_a_neural_attention
+lear_a_diagnosis,오차 분해·극단 날짜·oracle·기간별 LEAR·입력 가치 진단,18,project/adaptive-weighted-LSTM-Attention/results/lear_a_diagnosis
+lear_a_transition_check,가격 전환 및 모델 우위 예측 가능성 점검,18,project/adaptive-weighted-LSTM-Attention/results/lear_a_transition_check
+lear_a_transition_attention,전환·과거 오차 기반 어텐션과 MeanErrorMemory 비교,40,project/adaptive-weighted-LSTM-Attention/results/lear_a_transition_attention
+lear_a_simple_improvements,LevelShape·Reconcile·BiasMix·BOA 온라인 결합,19,project/adaptive-weighted-LSTM-Attention/results/lear_a_simple_improvements

@@ -1,0 +1,79 @@
+학습 기준: 과거 14일과 누적 시간대별 비중을 결합한 Recent
+최종 비교 기준: 원래 파일에 저장된 OriginalRecent
+OriginalRecent test MAE=3.37651, RMSE=5.52258
+Recent 파일: ['/Users/jgyu480/Projects/IIE4123.01-00-LSTM-with-Attention/adaptive-weighted-LSTM-Attention/results/lear_a_context_attention/test_predictions.csv']
+날짜 수: 학습 212, 조기종료 45, 방법선택 47, 테스트 364
+
+[학습 시작] MLP
+MLP seed=42 epoch=1 stop=0.445265
+MLP seed=42 epoch=10 stop=0.444824
+MLP seed=42 epoch=20 stop=0.448014
+MLP seed=42 epoch=30 stop=0.452798
+MLP seed=42 best_epoch=15
+MLP seed=43 epoch=1 stop=0.446343
+MLP seed=43 epoch=10 stop=0.446460
+MLP seed=43 epoch=20 stop=0.441271
+MLP seed=43 epoch=30 stop=0.443686
+MLP seed=43 best_epoch=22
+MLP seed=44 epoch=1 stop=0.445643
+MLP seed=44 epoch=10 stop=0.446522
+MLP seed=44 epoch=20 stop=0.453388
+MLP seed=44 best_epoch=13
+[검증 선택] {'method': 'MLP', 'strength': 0.0, 'val_MAE': 2.334431105385071, 'val_RMSE': 3.2235337717915744}
+
+[학습 시작] HorizonAttention
+HorizonAttention seed=42 epoch=1 stop=0.445223
+HorizonAttention seed=42 epoch=10 stop=0.447661
+HorizonAttention seed=42 epoch=20 stop=0.456262
+HorizonAttention seed=42 best_epoch=8
+HorizonAttention seed=43 epoch=1 stop=0.446773
+HorizonAttention seed=43 epoch=10 stop=0.451894
+HorizonAttention seed=43 best_epoch=2
+HorizonAttention seed=44 epoch=1 stop=0.446534
+HorizonAttention seed=44 epoch=10 stop=0.446509
+HorizonAttention seed=44 epoch=20 stop=0.457450
+HorizonAttention seed=44 best_epoch=13
+[검증 선택] {'method': 'HorizonAttention', 'strength': 0.0, 'val_MAE': 2.334431105385071, 'val_RMSE': 3.2235337717915744}
+
+[학습 시작] WindowAttention
+WindowAttention seed=42 epoch=1 stop=0.445663
+WindowAttention seed=42 epoch=10 stop=0.442866
+WindowAttention seed=42 epoch=20 stop=0.443743
+WindowAttention seed=42 epoch=30 stop=0.441476
+WindowAttention seed=42 best_epoch=23
+WindowAttention seed=43 epoch=1 stop=0.445664
+WindowAttention seed=43 epoch=10 stop=0.447270
+WindowAttention seed=43 best_epoch=1
+WindowAttention seed=44 epoch=1 stop=0.445635
+WindowAttention seed=44 epoch=10 stop=0.447012
+WindowAttention seed=44 best_epoch=1
+[검증 선택] {'method': 'WindowAttention', 'strength': 1.0, 'val_MAE': 2.334946534991109, 'val_RMSE': 3.2193813148039943}
+
+[학습 시작] HistoryAttention
+HistoryAttention seed=42 epoch=1 stop=0.445635
+HistoryAttention seed=42 epoch=10 stop=0.452336
+HistoryAttention seed=42 best_epoch=1
+HistoryAttention seed=43 epoch=1 stop=0.446631
+HistoryAttention seed=43 epoch=10 stop=0.450870
+HistoryAttention seed=43 epoch=20 stop=0.444983
+HistoryAttention seed=43 epoch=30 stop=0.438559
+HistoryAttention seed=43 epoch=40 stop=0.445129
+HistoryAttention seed=43 epoch=50 stop=0.454715
+HistoryAttention seed=43 epoch=60 stop=0.463785
+HistoryAttention seed=43 best_epoch=46
+HistoryAttention seed=44 epoch=1 stop=0.445904
+HistoryAttention seed=44 epoch=10 stop=0.451425
+HistoryAttention seed=44 best_epoch=1
+[검증 선택] {'method': 'HistoryAttention', 'strength': 0.0, 'val_MAE': 2.334431105385071, 'val_RMSE': 3.2235337717915744}
+
+          method  test_MAE  test_RMSE  gain_MAE_pct  gain_RMSE_pct  val_MAE  val_RMSE
+ WindowAttention  3.412345   5.616116     -1.061377      -1.693634 2.334947  3.219381
+          Recent  3.402695   5.567908     -0.775576      -0.820722 2.334431  3.223534
+             MLP  3.402695   5.567908     -0.775576      -0.820722 2.334431  3.223534
+HorizonAttention  3.402695   5.567908     -0.775576      -0.820722 2.334431  3.223534
+HistoryAttention  3.402695   5.567908     -0.775576      -0.820722 2.334431  3.223534
+  OriginalRecent  3.376507   5.522583      0.000000       0.000000      NaN       NaN
+               A  4.002994   7.037124    -18.554293     -27.424499      NaN       NaN
+            LEAR  3.737154   6.372375    -10.681048     -15.387582      NaN       NaN
+
+완료. 결과 저장 위치: /Users/jgyu480/Projects/IIE4123.01-00-LSTM-with-Attention/adaptive-weighted-LSTM-Attention/results/lear_a_neural_attention

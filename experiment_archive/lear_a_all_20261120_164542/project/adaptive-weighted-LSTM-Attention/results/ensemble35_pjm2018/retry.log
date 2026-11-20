@@ -1,0 +1,231 @@
+Requirement already satisfied: pip in ./results/ensemble35_pjm2018/.venv/lib/python3.13/site-packages (25.2)
+Collecting pip
+  Using cached pip-26.3-py3-none-any.whl.metadata (4.6 kB)
+Using cached pip-26.3-py3-none-any.whl (2.0 MB)
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 25.2
+    Uninstalling pip-25.2:
+      Successfully uninstalled pip-25.2
+Successfully installed pip-26.3
+Collecting torch
+  Using cached torch-2.15.0-cp313-cp313-macosx_14_0_arm64.whl.metadata (36 kB)
+Collecting numpy
+  Downloading numpy-2.5.5-cp313-cp313-macosx_14_0_arm64.whl.metadata (6.6 kB)
+Collecting pandas
+  Downloading pandas-3.1.1-cp313-cp313-macosx_11_0_arm64.whl.metadata (16 kB)
+Collecting scikit-learn
+  Downloading scikit_learn-1.9.1-cp313-cp313-macosx_12_0_arm64.whl.metadata (9.3 kB)
+Collecting scipy
+  Downloading scipy-1.18.1-cp313-cp313-macosx_14_0_arm64.whl.metadata (62 kB)
+Collecting joblib
+  Using cached joblib-1.6.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting filelock (from torch)
+  Using cached filelock-4.2.11-py3-none-any.whl.metadata (2.3 kB)
+Collecting typing-extensions>=4.13.0 (from torch)
+  Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting setuptools>=77.0.3 (from torch)
+  Using cached setuptools-84.2.1-py3-none-any.whl.metadata (6.6 kB)
+Collecting sympy>=1.13.3 (from torch)
+  Using cached sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+Collecting networkx>=2.5.1 (from torch)
+  Using cached networkx-3.7-py3-none-any.whl.metadata (6.7 kB)
+Collecting jinja2 (from torch)
+  Using cached jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting fsspec>=0.8.5 (from torch)
+  Using cached fsspec-2026.9.0-py3-none-any.whl.metadata (10 kB)
+Collecting python-dateutil>=2.9.0 (from pandas)
+  Using cached python_dateutil-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+Collecting narwhals>=2.0.1 (from scikit-learn)
+  Using cached narwhals-2.29.0-py3-none-any.whl.metadata (15 kB)
+Collecting threadpoolctl>=3.5.0 (from scikit-learn)
+  Using cached threadpoolctl-3.8.0-py3-none-any.whl.metadata (29 kB)
+Collecting cloudpickle>=3.0 (from joblib)
+  Using cached cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)
+Collecting tzdata (from python-dateutil>=2.9.0->pandas)
+  Using cached tzdata-2026.6-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy>=1.13.3->torch)
+  Using cached mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting MarkupSafe>=2.0 (from jinja2->torch)
+  Using cached markupsafe-3.0.4-cp313-cp313-macosx_11_0_arm64.whl.metadata (2.7 kB)
+Using cached torch-2.15.0-cp313-cp313-macosx_14_0_arm64.whl (138.6 MB)
+Downloading numpy-2.5.5-cp313-cp313-macosx_14_0_arm64.whl (5.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.5/5.5 MB 4.0 MB/s  0:00:01
+Downloading pandas-3.1.1-cp313-cp313-macosx_11_0_arm64.whl (11.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.2/11.2 MB 4.3 MB/s  0:00:02
+Downloading scikit_learn-1.9.1-cp313-cp313-macosx_12_0_arm64.whl (8.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.3/8.3 MB 3.4 MB/s  0:00:02
+Downloading scipy-1.18.1-cp313-cp313-macosx_14_0_arm64.whl (20.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 20.5/20.5 MB 4.2 MB/s  0:00:04
+Using cached joblib-1.6.0-py3-none-any.whl (306 kB)
+Using cached cloudpickle-3.1.2-py3-none-any.whl (22 kB)
+Using cached fsspec-2026.9.0-py3-none-any.whl (221 kB)
+Using cached narwhals-2.29.0-py3-none-any.whl (501 kB)
+Using cached networkx-3.7-py3-none-any.whl (2.1 MB)
+Using cached python_dateutil-4.0.0-py3-none-any.whl (92 kB)
+Using cached setuptools-84.2.1-py3-none-any.whl (876 kB)
+Using cached sympy-1.14.0-py3-none-any.whl (6.3 MB)
+Using cached mpmath-1.3.0-py3-none-any.whl (536 kB)
+Using cached threadpoolctl-3.8.0-py3-none-any.whl (32 kB)
+Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Using cached filelock-4.2.11-py3-none-any.whl (222 kB)
+Using cached jinja2-3.1.6-py3-none-any.whl (134 kB)
+Using cached markupsafe-3.0.4-cp313-cp313-macosx_11_0_arm64.whl (12 kB)
+Using cached tzdata-2026.6-py2.py3-none-any.whl (348 kB)
+Installing collected packages: mpmath, tzdata, typing-extensions, threadpoolctl, sympy, setuptools, numpy, networkx, narwhals, MarkupSafe, fsspec, filelock, cloudpickle, scipy, python-dateutil, joblib, jinja2, torch, scikit-learn, pandas
+
+Successfully installed MarkupSafe-3.0.4 cloudpickle-3.1.2 filelock-4.2.11 fsspec-2026.9.0 jinja2-3.1.6 joblib-1.6.0 mpmath-1.3.0 narwhals-2.29.0 networkx-3.7 numpy-2.5.5 pandas-3.1.1 python-dateutil-4.0.0 scikit-learn-1.9.1 scipy-1.18.1 setuptools-84.2.1 sympy-1.14.0 threadpoolctl-3.8.0 torch-2.15.0 typing-extensions-4.16.0 tzdata-2026.6
+repo=af2e397 device=cpu split=split2_2018
+skip (done): /Users/jgyu480/Projects/IIE4123.01-00-LSTM-with-Attention/adaptive-weighted-LSTM-Attention/results/step1/split2_2018/seed_42
+skip (done): /Users/jgyu480/Projects/IIE4123.01-00-LSTM-with-Attention/adaptive-weighted-LSTM-Attention/results/step1/split2_2018/seed_43
+skip (done): /Users/jgyu480/Projects/IIE4123.01-00-LSTM-with-Attention/adaptive-weighted-LSTM-Attention/results/step1/split2_2018/seed_44
+skip (done): /Users/jgyu480/Projects/IIE4123.01-00-LSTM-with-Attention/adaptive-weighted-LSTM-Attention/results/step1/split2_2018/seed_45
+skip (done): /Users/jgyu480/Projects/IIE4123.01-00-LSTM-with-Attention/adaptive-weighted-LSTM-Attention/results/step1/split2_2018/seed_46
+split2_2018 seed=42 C epoch=001 train=0.753558 val=0.075805
+split2_2018 seed=42 C epoch=002 train=0.521255 val=0.058474
+split2_2018 seed=42 C epoch=003 train=0.478728 val=0.053442
+split2_2018 seed=42 C epoch=004 train=0.450069 val=0.064721
+split2_2018 seed=42 C epoch=005 train=0.457739 val=0.054901
+split2_2018 seed=42 C epoch=006 train=0.442511 val=0.046229
+split2_2018 seed=42 C epoch=007 train=0.408641 val=0.047410
+split2_2018 seed=42 C epoch=008 train=0.407374 val=0.053453
+split2_2018 seed=42 C epoch=009 train=0.396977 val=0.046729
+split2_2018 seed=42 C epoch=010 train=0.379094 val=0.045328
+split2_2018 seed=42 C epoch=011 train=0.356889 val=0.045928
+split2_2018 seed=42 C epoch=012 train=0.338140 val=0.044739
+split2_2018 seed=42 C epoch=013 train=0.375779 val=0.045029
+split2_2018 seed=42 C epoch=014 train=0.377464 val=0.048027
+split2_2018 seed=42 C epoch=015 train=0.347510 val=0.049820
+split2_2018 seed=42 C epoch=016 train=0.364762 val=0.056260
+split2_2018 seed=42 C epoch=017 train=0.326809 val=0.053968
+split2_2018 seed=42 C epoch=018 train=0.334072 val=0.045388
+split2_2018 seed=42 C epoch=019 train=0.320270 val=0.046557
+split2_2018 seed=42 C epoch=020 train=0.405577 val=0.048858
+split2_2018 seed=42 C epoch=021 train=0.310286 val=0.044491
+split2_2018 seed=42 C epoch=022 train=0.328089 val=0.048576
+split2_2018 seed=42 C epoch=023 train=0.337910 val=0.051305
+split2_2018 seed=42 C epoch=024 train=0.353069 val=0.048207
+split2_2018 seed=42 C epoch=025 train=0.378886 val=0.048474
+split2_2018 seed=42 C epoch=026 train=0.306239 val=0.044728
+split2_2018 seed=42 C epoch=027 train=0.274964 val=0.045558
+split2_2018 seed=42 C epoch=028 train=0.260692 val=0.048829
+split2_2018 seed=42 C epoch=029 train=0.271979 val=0.045932
+split2_2018 seed=42 C epoch=030 train=0.451240 val=0.052358
+split2_2018 seed=42 C epoch=031 train=0.280894 val=0.048190
+split2_2018 seed=42 C k=20 test MAE=4.0736 RMSE=6.4074
+split2_2018 seed=43 C epoch=001 train=0.757439 val=0.081184
+split2_2018 seed=43 C epoch=002 train=0.618817 val=0.065092
+split2_2018 seed=43 C epoch=003 train=0.501075 val=0.053785
+split2_2018 seed=43 C epoch=004 train=0.542604 val=0.055659
+split2_2018 seed=43 C epoch=005 train=0.455373 val=0.061078
+split2_2018 seed=43 C epoch=006 train=0.437188 val=0.065867
+split2_2018 seed=43 C epoch=007 train=0.420721 val=0.050642
+split2_2018 seed=43 C epoch=008 train=0.395001 val=0.048061
+split2_2018 seed=43 C epoch=009 train=0.392124 val=0.043980
+split2_2018 seed=43 C epoch=010 train=0.412081 val=0.044630
+split2_2018 seed=43 C epoch=011 train=0.423961 val=0.045889
+split2_2018 seed=43 C epoch=012 train=0.396180 val=0.048728
+split2_2018 seed=43 C epoch=013 train=0.358556 val=0.043043
+split2_2018 seed=43 C epoch=014 train=0.393569 val=0.047079
+split2_2018 seed=43 C epoch=015 train=0.378432 val=0.045918
+split2_2018 seed=43 C epoch=016 train=0.373886 val=0.046400
+split2_2018 seed=43 C epoch=017 train=0.363377 val=0.051444
+split2_2018 seed=43 C epoch=018 train=0.323673 val=0.042687
+split2_2018 seed=43 C epoch=019 train=0.311995 val=0.042649
+split2_2018 seed=43 C epoch=020 train=0.314966 val=0.043864
+split2_2018 seed=43 C epoch=021 train=0.297206 val=0.042036
+split2_2018 seed=43 C epoch=022 train=0.299652 val=0.044817
+split2_2018 seed=43 C epoch=023 train=0.288428 val=0.044000
+split2_2018 seed=43 C epoch=024 train=0.370056 val=0.050199
+split2_2018 seed=43 C epoch=025 train=0.278232 val=0.046283
+split2_2018 seed=43 C epoch=026 train=0.234251 val=0.047650
+split2_2018 seed=43 C epoch=027 train=0.211952 val=0.043946
+split2_2018 seed=43 C epoch=028 train=0.180064 val=0.044149
+split2_2018 seed=43 C epoch=029 train=0.162122 val=0.044424
+split2_2018 seed=43 C epoch=030 train=0.203330 val=0.046215
+split2_2018 seed=43 C epoch=031 train=0.374275 val=0.050767
+split2_2018 seed=43 C k=20 test MAE=4.0800 RMSE=6.2797
+split2_2018 seed=44 C epoch=001 train=0.757898 val=0.071610
+split2_2018 seed=44 C epoch=002 train=0.574550 val=0.062627
+split2_2018 seed=44 C epoch=003 train=0.502177 val=0.059712
+split2_2018 seed=44 C epoch=004 train=0.486136 val=0.046595
+split2_2018 seed=44 C epoch=005 train=0.491727 val=0.053039
+split2_2018 seed=44 C epoch=006 train=0.462225 val=0.044148
+split2_2018 seed=44 C epoch=007 train=0.427019 val=0.049002
+split2_2018 seed=44 C epoch=008 train=0.392954 val=0.045272
+split2_2018 seed=44 C epoch=009 train=0.375985 val=0.044330
+split2_2018 seed=44 C epoch=010 train=0.405756 val=0.047481
+split2_2018 seed=44 C epoch=011 train=0.383093 val=0.045780
+split2_2018 seed=44 C epoch=012 train=0.364577 val=0.050194
+split2_2018 seed=44 C epoch=013 train=0.333112 val=0.042360
+split2_2018 seed=44 C epoch=014 train=0.342629 val=0.047941
+split2_2018 seed=44 C epoch=015 train=0.341337 val=0.044220
+split2_2018 seed=44 C epoch=016 train=0.307358 val=0.045623
+split2_2018 seed=44 C epoch=017 train=0.404598 val=0.054197
+split2_2018 seed=44 C epoch=018 train=0.324214 val=0.052400
+split2_2018 seed=44 C epoch=019 train=0.312859 val=0.050572
+split2_2018 seed=44 C epoch=020 train=0.281322 val=0.048466
+split2_2018 seed=44 C epoch=021 train=0.292155 val=0.045835
+split2_2018 seed=44 C epoch=022 train=0.345494 val=0.043537
+split2_2018 seed=44 C epoch=023 train=0.312627 val=0.042524
+split2_2018 seed=44 C k=10 test MAE=4.0743 RMSE=6.4835
+split2_2018 seed=45 C epoch=001 train=0.784658 val=0.082172
+split2_2018 seed=45 C epoch=002 train=0.541797 val=0.061320
+split2_2018 seed=45 C epoch=003 train=0.494166 val=0.076504
+split2_2018 seed=45 C epoch=004 train=0.501862 val=0.054862
+split2_2018 seed=45 C epoch=005 train=0.449803 val=0.051192
+split2_2018 seed=45 C epoch=006 train=0.439427 val=0.049406
+split2_2018 seed=45 C epoch=007 train=0.426306 val=0.046085
+split2_2018 seed=45 C epoch=008 train=0.424455 val=0.046170
+split2_2018 seed=45 C epoch=009 train=0.373395 val=0.048601
+split2_2018 seed=45 C epoch=010 train=0.367652 val=0.051630
+split2_2018 seed=45 C epoch=011 train=0.418758 val=0.043389
+split2_2018 seed=45 C epoch=012 train=0.354197 val=0.058937
+split2_2018 seed=45 C epoch=013 train=0.499450 val=0.049492
+split2_2018 seed=45 C epoch=014 train=0.430137 val=0.067091
+split2_2018 seed=45 C epoch=015 train=0.389381 val=0.045091
+split2_2018 seed=45 C epoch=016 train=0.355445 val=0.041669
+split2_2018 seed=45 C epoch=017 train=0.373034 val=0.072238
+split2_2018 seed=45 C epoch=018 train=0.378015 val=0.044448
+split2_2018 seed=45 C epoch=019 train=0.361575 val=0.048229
+split2_2018 seed=45 C epoch=020 train=0.341199 val=0.051892
+split2_2018 seed=45 C epoch=021 train=0.334152 val=0.057348
+split2_2018 seed=45 C epoch=022 train=0.316279 val=0.043697
+split2_2018 seed=45 C epoch=023 train=0.292579 val=0.051498
+split2_2018 seed=45 C epoch=024 train=0.243396 val=0.053531
+split2_2018 seed=45 C epoch=025 train=0.211064 val=0.047720
+split2_2018 seed=45 C epoch=026 train=0.178744 val=0.048487
+split2_2018 seed=45 C k=20 test MAE=4.0866 RMSE=6.8086
+split2_2018 seed=46 C epoch=001 train=0.809738 val=0.062445
+split2_2018 seed=46 C epoch=002 train=0.569045 val=0.051279
+split2_2018 seed=46 C epoch=003 train=0.487285 val=0.058846
+split2_2018 seed=46 C epoch=004 train=0.467221 val=0.072107
+split2_2018 seed=46 C epoch=005 train=0.484563 val=0.053994
+split2_2018 seed=46 C epoch=006 train=0.465979 val=0.050182
+split2_2018 seed=46 C epoch=007 train=0.479432 val=0.051016
+split2_2018 seed=46 C epoch=008 train=0.436092 val=0.054054
+split2_2018 seed=46 C epoch=009 train=0.425080 val=0.060594
+split2_2018 seed=46 C epoch=010 train=0.433979 val=0.058412
+split2_2018 seed=46 C epoch=011 train=0.405433 val=0.046959
+split2_2018 seed=46 C epoch=012 train=0.370176 val=0.049118
+split2_2018 seed=46 C epoch=013 train=0.357074 val=0.050019
+split2_2018 seed=46 C epoch=014 train=0.360246 val=0.054490
+split2_2018 seed=46 C epoch=015 train=0.340430 val=0.047371
+split2_2018 seed=46 C epoch=016 train=0.313854 val=0.046197
+split2_2018 seed=46 C epoch=017 train=0.289980 val=0.045611
+split2_2018 seed=46 C epoch=018 train=0.281063 val=0.049879
+split2_2018 seed=46 C epoch=019 train=0.257828 val=0.047350
+split2_2018 seed=46 C epoch=020 train=0.272676 val=0.047507
+split2_2018 seed=46 C epoch=021 train=0.231976 val=0.047535
+split2_2018 seed=46 C epoch=022 train=0.218803 val=0.045871
+split2_2018 seed=46 C epoch=023 train=0.198072 val=0.046611
+split2_2018 seed=46 C epoch=024 train=0.197680 val=0.046214
+split2_2018 seed=46 C epoch=025 train=0.192205 val=0.047126
+split2_2018 seed=46 C epoch=026 train=0.176601 val=0.047002
+split2_2018 seed=46 C epoch=027 train=0.174888 val=0.049087
+split2_2018 seed=46 C k=10 test MAE=4.3097 RMSE=6.9743
+/Users/jgyu480/Projects/IIE4123.01-00-LSTM-with-Attention/adaptive-weighted-LSTM-Attention/scripts/08_lear.py:82: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  X, Y = build(m.raw, calendar.dayofweek.to_numpy())
+split2_2018 val window=56 (min days used=56) MAE=2.9716 RMSE=4.8511 [23s]
+split2_2018 val window=84 (min days used=84) MAE=2.9641 RMSE=4.7896 [35s]
+/Users/jgyu480/Projects/IIE4123.01-00-LSTM-with-Attention/adaptive-weighted-LSTM-Attention/results/ensemble35_pjm2018/run.sh: line 34: 67651 Terminated: 15          OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 "$PYTHON" -u scripts/08_lear.py "${common[@]}" --jobs "${LEAR_JOBS:-4}"

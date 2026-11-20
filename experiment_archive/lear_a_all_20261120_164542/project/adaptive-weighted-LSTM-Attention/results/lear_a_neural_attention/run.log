@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/Users/jgyu480/Projects/IIE4123.01-00-LSTM-with-Attention/adaptive-weighted-LSTM-Attention/results/lear_a_neural_attention/train.py", line 107, in <module>
+    raise ValueError(f"Recent의 검증 예측이 부족합니다: {len(val)}일")
+ValueError: Recent의 검증 예측이 부족합니다: 0일

@@ -1,0 +1,38 @@
+{
+  "market": "PJM",
+  "columns": [
+    " Zonal COMED price",
+    " System load forecast",
+    " Zonal COMED load foecast"
+  ],
+  "data_sha256": "8596cff7a87cf47f9ee2215bd2af9fc8d6950d57339de9e06c87bad2efd407c6",
+  "mean": [
+    31.785060843821547,
+    91166.22255608975,
+    11417.675666781135
+  ],
+  "std": [
+    22.29916664842477,
+    16409.879162634308,
+    2214.586717744887
+  ],
+  "high_threshold": 52.82328489999998,
+  "splits": {
+    "train": {
+      "first_target": "2013-01-08 00:00:00",
+      "last_target": "2016-12-26 00:00:00",
+      "days": 1449
+    },
+    "val": {
+      "first_target": "2016-12-27 00:00:00",
+      "last_target": "2017-12-25 00:00:00",
+      "days": 364
+    },
+    "test": {
+      "first_target": "2017-12-26 00:00:00",
+      "last_target": "2018-12-24 00:00:00",
+      "days": 364
+    }
+  },
+  "protocol": "Frozen model; daily rolling inputs with previous days' observed prices; no refit on validation/test."
+}

@@ -1,0 +1,9 @@
+probe,reference,daily_MSE_diff,CI_low,CI_high,interpretation
+basic,probe_fixed_baseline,-1.0388657136427395,-2.664738938884453,0.09325738002271158,"negative favors probe; exploratory, unadjusted"
+basic,OriginalRecent,0.7536755705902581,-0.6635949124410505,2.223310218486995,"negative favors probe; exploratory, unadjusted"
+basic_plus_future_load_curve,probe_fixed_baseline,-1.3170440141838224,-2.9911692429331365,-0.1291380449513661,"negative favors probe; exploratory, unadjusted"
+basic_plus_future_load_curve,OriginalRecent,0.475497270049175,-0.9503472811329792,1.9226497917398835,"negative favors probe; exploratory, unadjusted"
+basic_plus_past_6hour_patches,probe_fixed_baseline,-1.1066619685838777,-2.6498521111510724,0.051747153789620505,"negative favors probe; exploratory, unadjusted"
+basic_plus_past_6hour_patches,OriginalRecent,0.6858793156491202,-0.7213583918501864,2.175554354966024,"negative favors probe; exploratory, unadjusted"
+all_context,probe_fixed_baseline,-1.3684578373224427,-2.9333632877771816,-0.17720249923451956,"negative favors probe; exploratory, unadjusted"
+all_context,OriginalRecent,0.42408344691055533,-0.8496086770179713,1.9022127060937841,"negative favors probe; exploratory, unadjusted"

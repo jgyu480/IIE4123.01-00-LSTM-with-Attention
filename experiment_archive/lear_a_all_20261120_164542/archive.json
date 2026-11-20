@@ -1,0 +1,12 @@
+{
+  "created_at_kst": "20261120_164542",
+  "source_remote": "https://github.com/jgyu480/IIE4123.01-00-LSTM-with-Attention.git",
+  "source_local_commit": "af2e397054c7553bf7aeedd544e72c22d93a004f",
+  "source_includes_uncommitted_files": true,
+  "branch": "results/all-lear-a-experiments-20261120_164542",
+  "files": 349,
+  "checkpoint_files": 77,
+  "total_bytes": 47757468,
+  "experiments_rerun": false,
+  "scope": "All local project results plus source code and PJM input"
+}

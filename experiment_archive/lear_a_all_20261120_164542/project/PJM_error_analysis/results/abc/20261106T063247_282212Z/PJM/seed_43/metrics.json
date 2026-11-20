@@ -1,0 +1,83 @@
+{
+  "A": {
+    "MAE": 4.237419203021788,
+    "RMSE": 7.265358176080471,
+    "high_RMSE": 18.797499683685466,
+    "total_exceedance_MAE": 14.304750965506353,
+    "peak_hour_MAE": 2.379120879120879,
+    "high_recall": 0.7117117117117117,
+    "false_positive_rate": 0.017969772700226108,
+    "best_epoch": 15,
+    "best_val_MSE_scaled": 0.04094748859440451,
+    "baseline": {
+      "MAE": 4.237419203021788,
+      "RMSE": 7.265358176080471,
+      "high_RMSE": 18.797499683685466,
+      "total_exceedance_MAE": 14.304750965506353,
+      "peak_hour_MAE": 2.379120879120879,
+      "high_recall": 0.7117117117117117,
+      "false_positive_rate": 0.017969772700226108
+    },
+    "previous_week": {
+      "MAE": 7.490462901671245,
+      "RMSE": 12.42740555627882,
+      "high_RMSE": 31.91384500115384,
+      "total_exceedance_MAE": 24.2418243725275,
+      "peak_hour_MAE": 3.208791208791209,
+      "high_recall": 0.18618618618618618,
+      "false_positive_rate": 0.032250386766630966
+    }
+  },
+  "previous_week": {
+    "MAE": 7.490462901671245,
+    "RMSE": 12.42740555627882,
+    "high_RMSE": 31.91384500115384,
+    "total_exceedance_MAE": 24.2418243725275,
+    "peak_hour_MAE": 3.208791208791209,
+    "high_recall": 0.18618618618618618,
+    "false_positive_rate": 0.032250386766630966
+  },
+  "B": {
+    "MAE": 4.338761451684258,
+    "RMSE": 6.9288057529563405,
+    "high_RMSE": 16.534317990096778,
+    "total_exceedance_MAE": 12.074310582324133,
+    "peak_hour_MAE": 2.64010989010989,
+    "high_recall": 0.6996996996996997,
+    "false_positive_rate": 0.021777936451267403,
+    "selected_k": 20
+  },
+  "C": {
+    "MAE": 4.07995517782004,
+    "RMSE": 6.27966498366605,
+    "high_RMSE": 16.54341994920494,
+    "total_exceedance_MAE": 8.377624154436885,
+    "peak_hour_MAE": 2.3626373626373627,
+    "high_recall": 0.6216216216216216,
+    "false_positive_rate": 0.010472450315363561,
+    "best_epoch": 21,
+    "best_val_MSE_scaled": 0.042035686991590285
+  },
+  "C_uniform": {
+    "MAE": 4.2316921145890225,
+    "RMSE": 7.164956005500875,
+    "high_RMSE": 18.784717345726115,
+    "total_exceedance_MAE": 13.109820249748632,
+    "peak_hour_MAE": 2.340659340659341,
+    "high_recall": 0.6846846846846847,
+    "false_positive_rate": 0.015827680590265382,
+    "best_epoch": 13,
+    "best_val_MSE_scaled": 0.04308289278557886
+  },
+  "C_no_price": {
+    "MAE": 4.293634603407904,
+    "RMSE": 7.240224869673551,
+    "high_RMSE": 19.487810984856353,
+    "total_exceedance_MAE": 13.93226119816078,
+    "peak_hour_MAE": 3.090659340659341,
+    "high_recall": 0.6726726726726727,
+    "false_positive_rate": 0.014994644769725098,
+    "best_epoch": 15,
+    "best_val_MSE_scaled": 0.044011247845796436
+  }
+}

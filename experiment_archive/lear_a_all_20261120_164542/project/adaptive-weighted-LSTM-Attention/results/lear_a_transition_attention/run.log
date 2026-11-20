@@ -1,0 +1,87 @@
+학습 기준: 과거 14일과 누적 시간대별 비중을 결합한 Recent
+최종 비교 기준: 원래 파일에 저장된 OriginalRecent
+OriginalRecent test MAE=3.37651, RMSE=5.52258
+Recent 파일: ['/Users/jgyu480/Projects/IIE4123.01-00-LSTM-with-Attention/adaptive-weighted-LSTM-Attention/results/lear_a_context_attention/test_predictions.csv']
+날짜 수: 학습 212, 조기종료 45, 방법선택 47, 테스트 364
+
+학습 212일 / 조기종료 45일 / 방법선택 47일 / 테스트 364일
+전환 보조 학습 기준: 하락 -4.390, 상승 5.029
+학습 클래스 수: [22, 168, 22]
+
+[학습 시작] MLP_Transition
+MLP_Transition seed=42 epoch=1 stop=0.445848
+MLP_Transition seed=42 epoch=20 stop=0.444131
+MLP_Transition seed=42 best_epoch=15
+MLP_Transition seed=43 epoch=1 stop=0.446051
+MLP_Transition seed=43 epoch=20 stop=0.442253
+MLP_Transition seed=43 best_epoch=14
+MLP_Transition seed=44 epoch=1 stop=0.445493
+MLP_Transition seed=44 epoch=20 stop=0.441956
+MLP_Transition seed=44 best_epoch=13
+
+[학습 시작] Horizon_Plain
+Horizon_Plain seed=42 epoch=1 stop=0.446226
+Horizon_Plain seed=42 epoch=20 stop=0.458861
+Horizon_Plain seed=42 best_epoch=1
+Horizon_Plain seed=43 epoch=1 stop=0.445824
+Horizon_Plain seed=43 epoch=20 stop=0.444924
+Horizon_Plain seed=43 epoch=40 stop=0.463111
+Horizon_Plain seed=43 best_epoch=22
+Horizon_Plain seed=44 epoch=1 stop=0.445446
+Horizon_Plain seed=44 epoch=20 stop=0.461511
+Horizon_Plain seed=44 best_epoch=4
+
+[학습 시작] Horizon_Transition
+Horizon_Transition seed=42 epoch=1 stop=0.446080
+Horizon_Transition seed=42 epoch=20 stop=0.446508
+Horizon_Transition seed=42 best_epoch=15
+Horizon_Transition seed=43 epoch=1 stop=0.445857
+Horizon_Transition seed=43 epoch=20 stop=0.441782
+Horizon_Transition seed=43 epoch=40 stop=0.437733
+Horizon_Transition seed=43 best_epoch=32
+Horizon_Transition seed=44 epoch=1 stop=0.445529
+Horizon_Transition seed=44 epoch=20 stop=0.450832
+Horizon_Transition seed=44 best_epoch=7
+
+[학습 시작] History_Transition
+History_Transition seed=42 epoch=1 stop=0.446169
+History_Transition seed=42 epoch=20 stop=0.446440
+History_Transition seed=42 epoch=40 stop=0.454460
+History_Transition seed=42 best_epoch=23
+History_Transition seed=43 epoch=1 stop=0.445612
+History_Transition seed=43 epoch=20 stop=0.445779
+History_Transition seed=43 best_epoch=8
+History_Transition seed=44 epoch=1 stop=0.445654
+History_Transition seed=44 epoch=20 stop=0.449823
+History_Transition seed=44 best_epoch=13
+
+[학습 시작] ErrorMemory_Transition
+ErrorMemory_Transition seed=42 epoch=1 stop=0.445461
+ErrorMemory_Transition seed=42 epoch=20 stop=0.450053
+ErrorMemory_Transition seed=42 best_epoch=5
+ErrorMemory_Transition seed=43 epoch=1 stop=0.446148
+ErrorMemory_Transition seed=43 epoch=20 stop=0.447840
+ErrorMemory_Transition seed=43 best_epoch=14
+ErrorMemory_Transition seed=44 epoch=1 stop=0.445030
+ErrorMemory_Transition seed=44 epoch=20 stop=0.434091
+ErrorMemory_Transition seed=44 best_epoch=13
+[검증 선택] {'method': 'MLP_Transition', 'strength': 0.5, 'val_MAE': 2.360830066188762, 'val_RMSE': 3.2188359679757683}
+[검증 선택] {'method': 'Horizon_Plain', 'strength': 0.0, 'val_MAE': 2.334431105385071, 'val_RMSE': 3.2235337717915744}
+[검증 선택] {'method': 'Horizon_Transition', 'strength': 0.0, 'val_MAE': 2.334431105385071, 'val_RMSE': 3.2235337717915744}
+[검증 선택] {'method': 'History_Transition', 'strength': 0.5, 'val_MAE': 2.3714531828260226, 'val_RMSE': 3.218710823653393}
+[검증 선택] {'method': 'ErrorMemory_Transition', 'strength': 0.25, 'val_MAE': 2.351806080123938, 'val_RMSE': 3.223465632117816}
+[검증 선택] {'method': 'MeanErrorMemory', 'strength': 0.5, 'val_MAE': 2.2963157626131, 'val_RMSE': 3.199150272286068}
+
+                method  test_MAE  test_RMSE  test_level_MSE  test_shape_MSE  gain_vs_OriginalRecent_MAE_pct  gain_vs_OriginalRecent_RMSE_pct  val_MAE  val_RMSE  val_level_MSE  val_shape_MSE
+       MeanErrorMemory  3.371632   5.539822       16.458001       14.231623                        0.144392                        -0.312145 2.296316  3.199150       4.795909       5.438654
+    History_Transition  3.394202   5.544704       16.347912       14.395831                       -0.524064                        -0.400553 2.371453  3.218711       4.725727       5.634373
+        MLP_Transition  3.408524   5.568046       16.475337       14.527796                       -0.948207                        -0.823210 2.360830  3.218836       4.705413       5.655492
+ErrorMemory_Transition  3.395347   5.555550       16.345489       14.518643                       -0.557952                        -0.596940 2.351806  3.223466       4.774633       5.616098
+        TrainingRecent  3.402695   5.567908       16.353662       14.647940                       -0.775576                        -0.820722 2.334431  3.223534       4.765716       5.625454
+         Horizon_Plain  3.402695   5.567908       16.353662       14.647940                       -0.775576                        -0.820722 2.334431  3.223534       4.765716       5.625454
+    Horizon_Transition  3.402695   5.567908       16.353662       14.647940                       -0.775576                        -0.820722 2.334431  3.223534       4.765716       5.625454
+        OriginalRecent  3.376507   5.522583       16.016249       14.482676                        0.000000                         0.000000      NaN       NaN            NaN            NaN
+                     A  4.002994   7.037124       27.787067       21.734048                      -18.554293                       -27.424499      NaN       NaN            NaN            NaN
+                  LEAR  3.737154   6.372375       23.546869       17.060296                      -10.681048                       -15.387582      NaN       NaN            NaN            NaN
+
+완료. 결과 위치: /Users/jgyu480/Projects/IIE4123.01-00-LSTM-with-Attention/adaptive-weighted-LSTM-Attention/results/lear_a_transition_attention

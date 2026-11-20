@@ -1,0 +1,7 @@
+
+/.venv/
+/data/
+/results/
+/.baseline-backups/
+__pycache__/
+*.py[cod]

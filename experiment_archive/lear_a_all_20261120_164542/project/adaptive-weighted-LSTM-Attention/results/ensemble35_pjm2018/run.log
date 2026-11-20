@@ -1,0 +1,691 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import torch, numpy, pandas, sklearn, scipy, joblib
+ModuleNotFoundError: No module named 'torch'
+Collecting torch==2.15.0 (from -r requirements.txt (line 1))
+  Using cached torch-2.15.0-cp313-cp313-macosx_14_0_arm64.whl.metadata (36 kB)
+Collecting numpy==2.5.4 (from -r requirements.txt (line 2))
+  Using cached numpy-2.5.4-cp313-cp313-macosx_14_0_arm64.whl.metadata (6.6 kB)
+Collecting pandas==2.3.3 (from -r requirements.txt (line 3))
+  Using cached pandas-2.3.3-cp313-cp313-macosx_11_0_arm64.whl.metadata (91 kB)
+Collecting scikit-learn==1.9.0 (from -r requirements.txt (line 4))
+  Downloading scikit_learn-1.9.0-cp313-cp313-macosx_12_0_arm64.whl.metadata (11 kB)
+Collecting scipy==1.18.0 (from -r requirements.txt (line 5))
+  Using cached scipy-1.18.0-cp313-cp313-macosx_14_0_arm64.whl.metadata (62 kB)
+Collecting filelock (from torch==2.15.0->-r requirements.txt (line 1))
+  Downloading filelock-4.2.11-py3-none-any.whl.metadata (2.3 kB)
+Collecting typing-extensions>=4.13.0 (from torch==2.15.0->-r requirements.txt (line 1))
+  Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting setuptools>=77.0.3 (from torch==2.15.0->-r requirements.txt (line 1))
+  Using cached setuptools-84.2.1-py3-none-any.whl.metadata (6.6 kB)
+Collecting sympy>=1.13.3 (from torch==2.15.0->-r requirements.txt (line 1))
+  Using cached sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+Collecting networkx>=2.5.1 (from torch==2.15.0->-r requirements.txt (line 1))
+  Using cached networkx-3.7-py3-none-any.whl.metadata (6.7 kB)
+Collecting jinja2 (from torch==2.15.0->-r requirements.txt (line 1))
+  Using cached jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting fsspec>=0.8.5 (from torch==2.15.0->-r requirements.txt (line 1))
+  Using cached fsspec-2026.9.0-py3-none-any.whl.metadata (10 kB)
+Collecting python-dateutil>=2.8.2 (from pandas==2.3.3->-r requirements.txt (line 3))
+  Using cached python_dateutil-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+Collecting pytz>=2020.1 (from pandas==2.3.3->-r requirements.txt (line 3))
+  Using cached pytz-2026.6-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata>=2022.7 (from pandas==2.3.3->-r requirements.txt (line 3))
+  Using cached tzdata-2026.6-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting joblib>=1.4.0 (from scikit-learn==1.9.0->-r requirements.txt (line 4))
+  Using cached joblib-1.6.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting narwhals>=2.0.1 (from scikit-learn==1.9.0->-r requirements.txt (line 4))
+  Downloading narwhals-2.29.0-py3-none-any.whl.metadata (15 kB)
+Collecting threadpoolctl>=3.5.0 (from scikit-learn==1.9.0->-r requirements.txt (line 4))
+  Downloading threadpoolctl-3.8.0-py3-none-any.whl.metadata (29 kB)
+Collecting cloudpickle>=3.0 (from joblib>=1.4.0->scikit-learn==1.9.0->-r requirements.txt (line 4))
+  Using cached cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy>=1.13.3->torch==2.15.0->-r requirements.txt (line 1))
+  Using cached mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting MarkupSafe>=2.0 (from jinja2->torch==2.15.0->-r requirements.txt (line 1))
+  Using cached markupsafe-3.0.4-cp313-cp313-macosx_11_0_arm64.whl.metadata (2.7 kB)
+Using cached torch-2.15.0-cp313-cp313-macosx_14_0_arm64.whl (138.6 MB)
+Using cached numpy-2.5.4-cp313-cp313-macosx_14_0_arm64.whl (5.4 MB)
+Using cached pandas-2.3.3-cp313-cp313-macosx_11_0_arm64.whl (10.7 MB)
+Downloading scikit_learn-1.9.0-cp313-cp313-macosx_12_0_arm64.whl (8.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.2/8.2 MB 6.6 MB/s  0:00:01
+Using cached scipy-1.18.0-cp313-cp313-macosx_14_0_arm64.whl (20.4 MB)
+Using cached fsspec-2026.9.0-py3-none-any.whl (221 kB)
+Using cached joblib-1.6.0-py3-none-any.whl (306 kB)
+Using cached cloudpickle-3.1.2-py3-none-any.whl (22 kB)
+Downloading narwhals-2.29.0-py3-none-any.whl (501 kB)
+Using cached networkx-3.7-py3-none-any.whl (2.1 MB)
+Using cached python_dateutil-4.0.0-py3-none-any.whl (92 kB)
+Using cached pytz-2026.6-py2.py3-none-any.whl (506 kB)
+Using cached setuptools-84.2.1-py3-none-any.whl (876 kB)
+Using cached sympy-1.14.0-py3-none-any.whl (6.3 MB)
+Using cached mpmath-1.3.0-py3-none-any.whl (536 kB)
+Downloading threadpoolctl-3.8.0-py3-none-any.whl (32 kB)
+Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Using cached tzdata-2026.6-py2.py3-none-any.whl (348 kB)
+Downloading filelock-4.2.11-py3-none-any.whl (222 kB)
+Using cached jinja2-3.1.6-py3-none-any.whl (134 kB)
+Using cached markupsafe-3.0.4-cp313-cp313-macosx_11_0_arm64.whl (12 kB)
+Installing collected packages: pytz, mpmath, tzdata, typing-extensions, threadpoolctl, sympy, setuptools, numpy, networkx, narwhals, MarkupSafe, fsspec, filelock, cloudpickle, scipy, python-dateutil, joblib, jinja2, torch, scikit-learn, pandas
+
+Successfully installed MarkupSafe-3.0.4 cloudpickle-3.1.2 filelock-4.2.11 fsspec-2026.9.0 jinja2-3.1.6 joblib-1.6.0 mpmath-1.3.0 narwhals-2.29.0 networkx-3.7 numpy-2.5.4 pandas-2.3.3 python-dateutil-4.0.0 pytz-2026.6 scikit-learn-1.9.0 scipy-1.18.0 setuptools-84.2.1 sympy-1.14.0 threadpoolctl-3.8.0 torch-2.15.0 typing-extensions-4.16.0 tzdata-2026.6
+
+[notice] A new release of pip is available: 25.2 -> 26.3
+[notice] To update, run: /Users/jgyu480/Projects/IIE4123.01-00-LSTM-with-Attention/adaptive-weighted-LSTM-Attention/../.venv/bin/python -m pip install --upgrade pip
+repo=af2e397 device=cpu split=split2_2018
+split2_2018 seed=42 main epoch=001 train_MSE_scaled=0.81435 val_MSE_scaled=0.08390
+split2_2018 seed=42 main epoch=002 train_MSE_scaled=0.61307 val_MSE_scaled=0.06901
+split2_2018 seed=42 main epoch=003 train_MSE_scaled=0.53013 val_MSE_scaled=0.05341
+split2_2018 seed=42 main epoch=004 train_MSE_scaled=0.46985 val_MSE_scaled=0.05412
+split2_2018 seed=42 main epoch=005 train_MSE_scaled=0.44320 val_MSE_scaled=0.04987
+split2_2018 seed=42 main epoch=006 train_MSE_scaled=0.41692 val_MSE_scaled=0.04715
+split2_2018 seed=42 main epoch=007 train_MSE_scaled=0.40638 val_MSE_scaled=0.04544
+split2_2018 seed=42 main epoch=008 train_MSE_scaled=0.39281 val_MSE_scaled=0.04560
+split2_2018 seed=42 main epoch=009 train_MSE_scaled=0.39475 val_MSE_scaled=0.05022
+split2_2018 seed=42 main epoch=010 train_MSE_scaled=0.39679 val_MSE_scaled=0.04352
+split2_2018 seed=42 main epoch=011 train_MSE_scaled=0.36071 val_MSE_scaled=0.04527
+split2_2018 seed=42 main epoch=012 train_MSE_scaled=0.35796 val_MSE_scaled=0.04617
+split2_2018 seed=42 main epoch=013 train_MSE_scaled=0.37088 val_MSE_scaled=0.04590
+split2_2018 seed=42 main epoch=014 train_MSE_scaled=0.34728 val_MSE_scaled=0.04714
+split2_2018 seed=42 main epoch=015 train_MSE_scaled=0.32174 val_MSE_scaled=0.07617
+split2_2018 seed=42 main epoch=016 train_MSE_scaled=0.34415 val_MSE_scaled=0.04360
+split2_2018 seed=42 main epoch=017 train_MSE_scaled=0.31529 val_MSE_scaled=0.06363
+split2_2018 seed=42 main epoch=018 train_MSE_scaled=0.32848 val_MSE_scaled=0.05245
+split2_2018 seed=42 main epoch=019 train_MSE_scaled=0.31566 val_MSE_scaled=0.04312
+split2_2018 seed=42 main epoch=020 train_MSE_scaled=0.31345 val_MSE_scaled=0.04186
+split2_2018 seed=42 main epoch=021 train_MSE_scaled=0.30649 val_MSE_scaled=0.04527
+split2_2018 seed=42 main epoch=022 train_MSE_scaled=0.28716 val_MSE_scaled=0.04515
+split2_2018 seed=42 main epoch=023 train_MSE_scaled=0.27563 val_MSE_scaled=0.04585
+split2_2018 seed=42 main epoch=024 train_MSE_scaled=0.27145 val_MSE_scaled=0.04476
+split2_2018 seed=42 main epoch=025 train_MSE_scaled=0.26946 val_MSE_scaled=0.04357
+split2_2018 seed=42 main epoch=026 train_MSE_scaled=0.25006 val_MSE_scaled=0.04546
+split2_2018 seed=42 main epoch=027 train_MSE_scaled=0.22094 val_MSE_scaled=0.04266
+split2_2018 seed=42 main epoch=028 train_MSE_scaled=0.20706 val_MSE_scaled=0.04386
+split2_2018 seed=42 main epoch=029 train_MSE_scaled=0.20011 val_MSE_scaled=0.04201
+split2_2018 seed=42 main epoch=030 train_MSE_scaled=0.27810 val_MSE_scaled=0.04964
+split2_2018 seed=42 fold1 epoch=001 train_MSE_scaled=0.94034
+split2_2018 seed=42 fold1 epoch=002 train_MSE_scaled=0.66939
+split2_2018 seed=42 fold1 epoch=003 train_MSE_scaled=0.52387
+split2_2018 seed=42 fold1 epoch=004 train_MSE_scaled=0.43614
+split2_2018 seed=42 fold1 epoch=005 train_MSE_scaled=0.34903
+split2_2018 seed=42 fold1 epoch=006 train_MSE_scaled=0.29091
+split2_2018 seed=42 fold1 epoch=007 train_MSE_scaled=0.24873
+split2_2018 seed=42 fold1 epoch=008 train_MSE_scaled=0.23188
+split2_2018 seed=42 fold1 epoch=009 train_MSE_scaled=0.20504
+split2_2018 seed=42 fold1 epoch=010 train_MSE_scaled=0.18790
+split2_2018 seed=42 fold1 epoch=011 train_MSE_scaled=0.17172
+split2_2018 seed=42 fold1 epoch=012 train_MSE_scaled=0.15998
+split2_2018 seed=42 fold1 epoch=013 train_MSE_scaled=0.14744
+split2_2018 seed=42 fold1 epoch=014 train_MSE_scaled=0.14094
+split2_2018 seed=42 fold1 epoch=015 train_MSE_scaled=0.18015
+split2_2018 seed=42 fold1 epoch=016 train_MSE_scaled=0.16488
+split2_2018 seed=42 fold1 epoch=017 train_MSE_scaled=0.16228
+split2_2018 seed=42 fold1 epoch=018 train_MSE_scaled=0.13178
+split2_2018 seed=42 fold1 epoch=019 train_MSE_scaled=0.12075
+split2_2018 seed=42 fold1 epoch=020 train_MSE_scaled=0.12481
+split2_2018 seed=42 fold2 epoch=001 train_MSE_scaled=0.88279
+split2_2018 seed=42 fold2 epoch=002 train_MSE_scaled=0.70721
+split2_2018 seed=42 fold2 epoch=003 train_MSE_scaled=0.59183
+split2_2018 seed=42 fold2 epoch=004 train_MSE_scaled=0.54264
+split2_2018 seed=42 fold2 epoch=005 train_MSE_scaled=0.50958
+split2_2018 seed=42 fold2 epoch=006 train_MSE_scaled=0.46499
+split2_2018 seed=42 fold2 epoch=007 train_MSE_scaled=0.43252
+split2_2018 seed=42 fold2 epoch=008 train_MSE_scaled=0.41462
+split2_2018 seed=42 fold2 epoch=009 train_MSE_scaled=0.44684
+split2_2018 seed=42 fold2 epoch=010 train_MSE_scaled=0.41869
+split2_2018 seed=42 fold2 epoch=011 train_MSE_scaled=0.40165
+split2_2018 seed=42 fold2 epoch=012 train_MSE_scaled=0.38130
+split2_2018 seed=42 fold2 epoch=013 train_MSE_scaled=0.38877
+split2_2018 seed=42 fold2 epoch=014 train_MSE_scaled=0.38188
+split2_2018 seed=42 fold2 epoch=015 train_MSE_scaled=0.37387
+split2_2018 seed=42 fold2 epoch=016 train_MSE_scaled=0.37155
+split2_2018 seed=42 fold2 epoch=017 train_MSE_scaled=0.36763
+split2_2018 seed=42 fold2 epoch=018 train_MSE_scaled=0.33640
+split2_2018 seed=42 fold2 epoch=019 train_MSE_scaled=0.33408
+split2_2018 seed=42 fold2 epoch=020 train_MSE_scaled=0.32673
+split2_2018 seed=42 fold3 epoch=001 train_MSE_scaled=0.83523
+split2_2018 seed=42 fold3 epoch=002 train_MSE_scaled=0.63268
+split2_2018 seed=42 fold3 epoch=003 train_MSE_scaled=0.57462
+split2_2018 seed=42 fold3 epoch=004 train_MSE_scaled=0.53028
+split2_2018 seed=42 fold3 epoch=005 train_MSE_scaled=0.48230
+split2_2018 seed=42 fold3 epoch=006 train_MSE_scaled=0.46719
+split2_2018 seed=42 fold3 epoch=007 train_MSE_scaled=0.45265
+split2_2018 seed=42 fold3 epoch=008 train_MSE_scaled=0.41991
+split2_2018 seed=42 fold3 epoch=009 train_MSE_scaled=0.41342
+split2_2018 seed=42 fold3 epoch=010 train_MSE_scaled=0.40880
+split2_2018 seed=42 fold3 epoch=011 train_MSE_scaled=0.38220
+split2_2018 seed=42 fold3 epoch=012 train_MSE_scaled=0.40145
+split2_2018 seed=42 fold3 epoch=013 train_MSE_scaled=0.36428
+split2_2018 seed=42 fold3 epoch=014 train_MSE_scaled=0.36857
+split2_2018 seed=42 fold3 epoch=015 train_MSE_scaled=0.35869
+split2_2018 seed=42 fold3 epoch=016 train_MSE_scaled=0.33659
+split2_2018 seed=42 fold3 epoch=017 train_MSE_scaled=0.32605
+split2_2018 seed=42 fold3 epoch=018 train_MSE_scaled=0.32465
+split2_2018 seed=42 fold3 epoch=019 train_MSE_scaled=0.30215
+split2_2018 seed=42 fold3 epoch=020 train_MSE_scaled=0.30362
+split2_2018 seed=42 LSTM test MAE=4.3780 RMSE=8.1944 -> /Users/jgyu480/Projects/IIE4123.01-00-LSTM-with-Attention/adaptive-weighted-LSTM-Attention/results/step1/split2_2018/seed_42
+split2_2018 seed=43 main epoch=001 train_MSE_scaled=0.83101 val_MSE_scaled=0.08874
+split2_2018 seed=43 main epoch=002 train_MSE_scaled=0.58100 val_MSE_scaled=0.06477
+split2_2018 seed=43 main epoch=003 train_MSE_scaled=0.47974 val_MSE_scaled=0.04920
+split2_2018 seed=43 main epoch=004 train_MSE_scaled=0.45161 val_MSE_scaled=0.05086
+split2_2018 seed=43 main epoch=005 train_MSE_scaled=0.42180 val_MSE_scaled=0.05159
+split2_2018 seed=43 main epoch=006 train_MSE_scaled=0.40661 val_MSE_scaled=0.04948
+split2_2018 seed=43 main epoch=007 train_MSE_scaled=0.39878 val_MSE_scaled=0.06355
+split2_2018 seed=43 main epoch=008 train_MSE_scaled=0.38661 val_MSE_scaled=0.04588
+split2_2018 seed=43 main epoch=009 train_MSE_scaled=0.37705 val_MSE_scaled=0.04415
+split2_2018 seed=43 main epoch=010 train_MSE_scaled=0.35534 val_MSE_scaled=0.04667
+split2_2018 seed=43 main epoch=011 train_MSE_scaled=0.36058 val_MSE_scaled=0.04514
+split2_2018 seed=43 main epoch=012 train_MSE_scaled=0.35735 val_MSE_scaled=0.04733
+split2_2018 seed=43 main epoch=013 train_MSE_scaled=0.33687 val_MSE_scaled=0.04341
+split2_2018 seed=43 main epoch=014 train_MSE_scaled=0.34413 val_MSE_scaled=0.05529
+split2_2018 seed=43 main epoch=015 train_MSE_scaled=0.36733 val_MSE_scaled=0.04095
+split2_2018 seed=43 main epoch=016 train_MSE_scaled=0.34643 val_MSE_scaled=0.04560
+split2_2018 seed=43 main epoch=017 train_MSE_scaled=0.36192 val_MSE_scaled=0.04477
+split2_2018 seed=43 main epoch=018 train_MSE_scaled=0.30682 val_MSE_scaled=0.04504
+split2_2018 seed=43 main epoch=019 train_MSE_scaled=0.31787 val_MSE_scaled=0.04222
+split2_2018 seed=43 main epoch=020 train_MSE_scaled=0.29696 val_MSE_scaled=0.04373
+split2_2018 seed=43 main epoch=021 train_MSE_scaled=0.31472 val_MSE_scaled=0.04299
+split2_2018 seed=43 main epoch=022 train_MSE_scaled=0.28820 val_MSE_scaled=0.04220
+split2_2018 seed=43 main epoch=023 train_MSE_scaled=0.28913 val_MSE_scaled=0.04218
+split2_2018 seed=43 main epoch=024 train_MSE_scaled=0.29384 val_MSE_scaled=0.04471
+split2_2018 seed=43 main epoch=025 train_MSE_scaled=0.27573 val_MSE_scaled=0.04521
+split2_2018 seed=43 fold1 epoch=001 train_MSE_scaled=0.93800
+split2_2018 seed=43 fold1 epoch=002 train_MSE_scaled=0.71248
+split2_2018 seed=43 fold1 epoch=003 train_MSE_scaled=0.55248
+split2_2018 seed=43 fold1 epoch=004 train_MSE_scaled=0.47779
+split2_2018 seed=43 fold1 epoch=005 train_MSE_scaled=0.40019
+split2_2018 seed=43 fold1 epoch=006 train_MSE_scaled=0.33684
+split2_2018 seed=43 fold1 epoch=007 train_MSE_scaled=0.30357
+split2_2018 seed=43 fold1 epoch=008 train_MSE_scaled=0.27144
+split2_2018 seed=43 fold1 epoch=009 train_MSE_scaled=0.24534
+split2_2018 seed=43 fold1 epoch=010 train_MSE_scaled=0.22013
+split2_2018 seed=43 fold1 epoch=011 train_MSE_scaled=0.20723
+split2_2018 seed=43 fold1 epoch=012 train_MSE_scaled=0.18526
+split2_2018 seed=43 fold1 epoch=013 train_MSE_scaled=0.19561
+split2_2018 seed=43 fold1 epoch=014 train_MSE_scaled=0.20421
+split2_2018 seed=43 fold1 epoch=015 train_MSE_scaled=0.23118
+split2_2018 seed=43 fold2 epoch=001 train_MSE_scaled=0.87742
+split2_2018 seed=43 fold2 epoch=002 train_MSE_scaled=0.68308
+split2_2018 seed=43 fold2 epoch=003 train_MSE_scaled=0.56544
+split2_2018 seed=43 fold2 epoch=004 train_MSE_scaled=0.51790
+split2_2018 seed=43 fold2 epoch=005 train_MSE_scaled=0.46319
+split2_2018 seed=43 fold2 epoch=006 train_MSE_scaled=0.44047
+split2_2018 seed=43 fold2 epoch=007 train_MSE_scaled=0.41994
+split2_2018 seed=43 fold2 epoch=008 train_MSE_scaled=0.40431
+split2_2018 seed=43 fold2 epoch=009 train_MSE_scaled=0.39764
+split2_2018 seed=43 fold2 epoch=010 train_MSE_scaled=0.37501
+split2_2018 seed=43 fold2 epoch=011 train_MSE_scaled=0.38470
+split2_2018 seed=43 fold2 epoch=012 train_MSE_scaled=0.37880
+split2_2018 seed=43 fold2 epoch=013 train_MSE_scaled=0.37826
+split2_2018 seed=43 fold2 epoch=014 train_MSE_scaled=0.34144
+split2_2018 seed=43 fold2 epoch=015 train_MSE_scaled=0.37282
+split2_2018 seed=43 fold3 epoch=001 train_MSE_scaled=0.84975
+split2_2018 seed=43 fold3 epoch=002 train_MSE_scaled=0.63753
+split2_2018 seed=43 fold3 epoch=003 train_MSE_scaled=0.52639
+split2_2018 seed=43 fold3 epoch=004 train_MSE_scaled=0.48941
+split2_2018 seed=43 fold3 epoch=005 train_MSE_scaled=0.46699
+split2_2018 seed=43 fold3 epoch=006 train_MSE_scaled=0.44998
+split2_2018 seed=43 fold3 epoch=007 train_MSE_scaled=0.45217
+split2_2018 seed=43 fold3 epoch=008 train_MSE_scaled=0.41694
+split2_2018 seed=43 fold3 epoch=009 train_MSE_scaled=0.39386
+split2_2018 seed=43 fold3 epoch=010 train_MSE_scaled=0.39374
+split2_2018 seed=43 fold3 epoch=011 train_MSE_scaled=0.37905
+split2_2018 seed=43 fold3 epoch=012 train_MSE_scaled=0.38153
+split2_2018 seed=43 fold3 epoch=013 train_MSE_scaled=0.37425
+split2_2018 seed=43 fold3 epoch=014 train_MSE_scaled=0.33410
+split2_2018 seed=43 fold3 epoch=015 train_MSE_scaled=0.32734
+split2_2018 seed=43 LSTM test MAE=4.2374 RMSE=7.2654 -> /Users/jgyu480/Projects/IIE4123.01-00-LSTM-with-Attention/adaptive-weighted-LSTM-Attention/results/step1/split2_2018/seed_43
+split2_2018 seed=44 main epoch=001 train_MSE_scaled=0.83382 val_MSE_scaled=0.09783
+split2_2018 seed=44 main epoch=002 train_MSE_scaled=0.60902 val_MSE_scaled=0.06253
+split2_2018 seed=44 main epoch=003 train_MSE_scaled=0.50596 val_MSE_scaled=0.06113
+split2_2018 seed=44 main epoch=004 train_MSE_scaled=0.47569 val_MSE_scaled=0.05251
+split2_2018 seed=44 main epoch=005 train_MSE_scaled=0.43981 val_MSE_scaled=0.05132
+split2_2018 seed=44 main epoch=006 train_MSE_scaled=0.42571 val_MSE_scaled=0.04525
+split2_2018 seed=44 main epoch=007 train_MSE_scaled=0.40324 val_MSE_scaled=0.04869
+split2_2018 seed=44 main epoch=008 train_MSE_scaled=0.38552 val_MSE_scaled=0.04497
+split2_2018 seed=44 main epoch=009 train_MSE_scaled=0.36989 val_MSE_scaled=0.04352
+split2_2018 seed=44 main epoch=010 train_MSE_scaled=0.38653 val_MSE_scaled=0.04403
+split2_2018 seed=44 main epoch=011 train_MSE_scaled=0.37385 val_MSE_scaled=0.04506
+split2_2018 seed=44 main epoch=012 train_MSE_scaled=0.35982 val_MSE_scaled=0.04580
+split2_2018 seed=44 main epoch=013 train_MSE_scaled=0.33095 val_MSE_scaled=0.04866
+split2_2018 seed=44 main epoch=014 train_MSE_scaled=0.33808 val_MSE_scaled=0.04464
+split2_2018 seed=44 main epoch=015 train_MSE_scaled=0.33858 val_MSE_scaled=0.04474
+split2_2018 seed=44 main epoch=016 train_MSE_scaled=0.33011 val_MSE_scaled=0.04544
+split2_2018 seed=44 main epoch=017 train_MSE_scaled=0.37647 val_MSE_scaled=0.04168
+split2_2018 seed=44 main epoch=018 train_MSE_scaled=0.33182 val_MSE_scaled=0.05164
+split2_2018 seed=44 main epoch=019 train_MSE_scaled=0.31061 val_MSE_scaled=0.04794
+split2_2018 seed=44 main epoch=020 train_MSE_scaled=0.29579 val_MSE_scaled=0.05072
+split2_2018 seed=44 main epoch=021 train_MSE_scaled=0.28720 val_MSE_scaled=0.04535
+split2_2018 seed=44 main epoch=022 train_MSE_scaled=0.28487 val_MSE_scaled=0.04178
+split2_2018 seed=44 main epoch=023 train_MSE_scaled=0.37109 val_MSE_scaled=0.04454
+split2_2018 seed=44 main epoch=024 train_MSE_scaled=0.29446 val_MSE_scaled=0.04274
+split2_2018 seed=44 main epoch=025 train_MSE_scaled=0.27828 val_MSE_scaled=0.04386
+split2_2018 seed=44 main epoch=026 train_MSE_scaled=0.26565 val_MSE_scaled=0.05260
+split2_2018 seed=44 main epoch=027 train_MSE_scaled=0.25194 val_MSE_scaled=0.04314
+split2_2018 seed=44 fold1 epoch=001 train_MSE_scaled=0.92574
+split2_2018 seed=44 fold1 epoch=002 train_MSE_scaled=0.67298
+split2_2018 seed=44 fold1 epoch=003 train_MSE_scaled=0.55372
+split2_2018 seed=44 fold1 epoch=004 train_MSE_scaled=0.46988
+split2_2018 seed=44 fold1 epoch=005 train_MSE_scaled=0.40338
+split2_2018 seed=44 fold1 epoch=006 train_MSE_scaled=0.34133
+split2_2018 seed=44 fold1 epoch=007 train_MSE_scaled=0.28596
+split2_2018 seed=44 fold1 epoch=008 train_MSE_scaled=0.24709
+split2_2018 seed=44 fold1 epoch=009 train_MSE_scaled=0.22760
+split2_2018 seed=44 fold1 epoch=010 train_MSE_scaled=0.21267
+split2_2018 seed=44 fold1 epoch=011 train_MSE_scaled=0.20131
+split2_2018 seed=44 fold1 epoch=012 train_MSE_scaled=0.19160
+split2_2018 seed=44 fold1 epoch=013 train_MSE_scaled=0.16730
+split2_2018 seed=44 fold1 epoch=014 train_MSE_scaled=0.14653
+split2_2018 seed=44 fold1 epoch=015 train_MSE_scaled=0.13319
+split2_2018 seed=44 fold1 epoch=016 train_MSE_scaled=0.12353
+split2_2018 seed=44 fold1 epoch=017 train_MSE_scaled=0.11899
+split2_2018 seed=44 fold2 epoch=001 train_MSE_scaled=0.94467
+split2_2018 seed=44 fold2 epoch=002 train_MSE_scaled=0.73878
+split2_2018 seed=44 fold2 epoch=003 train_MSE_scaled=0.59966
+split2_2018 seed=44 fold2 epoch=004 train_MSE_scaled=0.52600
+split2_2018 seed=44 fold2 epoch=005 train_MSE_scaled=0.49666
+split2_2018 seed=44 fold2 epoch=006 train_MSE_scaled=0.44777
+split2_2018 seed=44 fold2 epoch=007 train_MSE_scaled=0.43922
+split2_2018 seed=44 fold2 epoch=008 train_MSE_scaled=0.41634
+split2_2018 seed=44 fold2 epoch=009 train_MSE_scaled=0.39785
+split2_2018 seed=44 fold2 epoch=010 train_MSE_scaled=0.38560
+split2_2018 seed=44 fold2 epoch=011 train_MSE_scaled=0.37215
+split2_2018 seed=44 fold2 epoch=012 train_MSE_scaled=0.36754
+split2_2018 seed=44 fold2 epoch=013 train_MSE_scaled=0.37738
+split2_2018 seed=44 fold2 epoch=014 train_MSE_scaled=0.35136
+split2_2018 seed=44 fold2 epoch=015 train_MSE_scaled=0.35655
+split2_2018 seed=44 fold2 epoch=016 train_MSE_scaled=0.35426
+split2_2018 seed=44 fold2 epoch=017 train_MSE_scaled=0.34621
+split2_2018 seed=44 fold3 epoch=001 train_MSE_scaled=0.85315
+split2_2018 seed=44 fold3 epoch=002 train_MSE_scaled=0.64058
+split2_2018 seed=44 fold3 epoch=003 train_MSE_scaled=0.53764
+split2_2018 seed=44 fold3 epoch=004 train_MSE_scaled=0.49922
+split2_2018 seed=44 fold3 epoch=005 train_MSE_scaled=0.48554
+split2_2018 seed=44 fold3 epoch=006 train_MSE_scaled=0.45431
+split2_2018 seed=44 fold3 epoch=007 train_MSE_scaled=0.42311
+split2_2018 seed=44 fold3 epoch=008 train_MSE_scaled=0.40863
+split2_2018 seed=44 fold3 epoch=009 train_MSE_scaled=0.39238
+split2_2018 seed=44 fold3 epoch=010 train_MSE_scaled=0.39918
+split2_2018 seed=44 fold3 epoch=011 train_MSE_scaled=0.38566
+split2_2018 seed=44 fold3 epoch=012 train_MSE_scaled=0.38451
+split2_2018 seed=44 fold3 epoch=013 train_MSE_scaled=0.35424
+split2_2018 seed=44 fold3 epoch=014 train_MSE_scaled=0.36079
+split2_2018 seed=44 fold3 epoch=015 train_MSE_scaled=0.34844
+split2_2018 seed=44 fold3 epoch=016 train_MSE_scaled=0.35441
+split2_2018 seed=44 fold3 epoch=017 train_MSE_scaled=0.33081
+split2_2018 seed=44 LSTM test MAE=4.2241 RMSE=6.9119 -> /Users/jgyu480/Projects/IIE4123.01-00-LSTM-with-Attention/adaptive-weighted-LSTM-Attention/results/step1/split2_2018/seed_44
+split2_2018 seed=45 main epoch=001 train_MSE_scaled=0.84658 val_MSE_scaled=0.08905
+split2_2018 seed=45 main epoch=002 train_MSE_scaled=0.59468 val_MSE_scaled=0.05448
+split2_2018 seed=45 main epoch=003 train_MSE_scaled=0.48925 val_MSE_scaled=0.07371
+split2_2018 seed=45 main epoch=004 train_MSE_scaled=0.46373 val_MSE_scaled=0.07535
+split2_2018 seed=45 main epoch=005 train_MSE_scaled=0.42727 val_MSE_scaled=0.05174
+split2_2018 seed=45 main epoch=006 train_MSE_scaled=0.41962 val_MSE_scaled=0.04747
+split2_2018 seed=45 main epoch=007 train_MSE_scaled=0.40712 val_MSE_scaled=0.05742
+split2_2018 seed=45 main epoch=008 train_MSE_scaled=0.39331 val_MSE_scaled=0.04335
+split2_2018 seed=45 main epoch=009 train_MSE_scaled=0.37439 val_MSE_scaled=0.04513
+split2_2018 seed=45 main epoch=010 train_MSE_scaled=0.38021 val_MSE_scaled=0.04560
+split2_2018 seed=45 main epoch=011 train_MSE_scaled=0.37067 val_MSE_scaled=0.04319
+split2_2018 seed=45 main epoch=012 train_MSE_scaled=0.35874 val_MSE_scaled=0.04352
+split2_2018 seed=45 main epoch=013 train_MSE_scaled=0.35471 val_MSE_scaled=0.04309
+split2_2018 seed=45 main epoch=014 train_MSE_scaled=0.34564 val_MSE_scaled=0.04384
+split2_2018 seed=45 main epoch=015 train_MSE_scaled=0.32503 val_MSE_scaled=0.04899
+split2_2018 seed=45 main epoch=016 train_MSE_scaled=0.30556 val_MSE_scaled=0.04301
+split2_2018 seed=45 main epoch=017 train_MSE_scaled=0.30685 val_MSE_scaled=0.04272
+split2_2018 seed=45 main epoch=018 train_MSE_scaled=0.32834 val_MSE_scaled=0.04259
+split2_2018 seed=45 main epoch=019 train_MSE_scaled=0.37020 val_MSE_scaled=0.04615
+split2_2018 seed=45 main epoch=020 train_MSE_scaled=0.33255 val_MSE_scaled=0.04385
+split2_2018 seed=45 main epoch=021 train_MSE_scaled=0.32679 val_MSE_scaled=0.04274
+split2_2018 seed=45 main epoch=022 train_MSE_scaled=0.30379 val_MSE_scaled=0.04418
+split2_2018 seed=45 main epoch=023 train_MSE_scaled=0.32560 val_MSE_scaled=0.04358
+split2_2018 seed=45 main epoch=024 train_MSE_scaled=0.30920 val_MSE_scaled=0.04596
+split2_2018 seed=45 main epoch=025 train_MSE_scaled=0.28741 val_MSE_scaled=0.04103
+split2_2018 seed=45 main epoch=026 train_MSE_scaled=0.29180 val_MSE_scaled=0.05756
+split2_2018 seed=45 main epoch=027 train_MSE_scaled=0.26546 val_MSE_scaled=0.04302
+split2_2018 seed=45 main epoch=028 train_MSE_scaled=0.23887 val_MSE_scaled=0.04060
+split2_2018 seed=45 main epoch=029 train_MSE_scaled=0.24015 val_MSE_scaled=0.04043
+split2_2018 seed=45 main epoch=030 train_MSE_scaled=0.23344 val_MSE_scaled=0.04211
+split2_2018 seed=45 main epoch=031 train_MSE_scaled=0.28543 val_MSE_scaled=0.05783
+split2_2018 seed=45 main epoch=032 train_MSE_scaled=0.25625 val_MSE_scaled=0.03999
+split2_2018 seed=45 main epoch=033 train_MSE_scaled=0.23397 val_MSE_scaled=0.04366
+split2_2018 seed=45 main epoch=034 train_MSE_scaled=0.20265 val_MSE_scaled=0.04013
+split2_2018 seed=45 main epoch=035 train_MSE_scaled=0.16719 val_MSE_scaled=0.04034
+split2_2018 seed=45 main epoch=036 train_MSE_scaled=0.18060 val_MSE_scaled=0.04338
+split2_2018 seed=45 main epoch=037 train_MSE_scaled=0.16144 val_MSE_scaled=0.04191
+split2_2018 seed=45 main epoch=038 train_MSE_scaled=0.14956 val_MSE_scaled=0.04255
+split2_2018 seed=45 main epoch=039 train_MSE_scaled=0.14311 val_MSE_scaled=0.04138
+split2_2018 seed=45 main epoch=040 train_MSE_scaled=0.13510 val_MSE_scaled=0.04195
+split2_2018 seed=45 main epoch=041 train_MSE_scaled=0.14860 val_MSE_scaled=0.04680
+split2_2018 seed=45 main epoch=042 train_MSE_scaled=0.12548 val_MSE_scaled=0.04106
+split2_2018 seed=45 fold1 epoch=001 train_MSE_scaled=0.93009
+split2_2018 seed=45 fold1 epoch=002 train_MSE_scaled=0.68644
+split2_2018 seed=45 fold1 epoch=003 train_MSE_scaled=0.54466
+split2_2018 seed=45 fold1 epoch=004 train_MSE_scaled=0.47297
+split2_2018 seed=45 fold1 epoch=005 train_MSE_scaled=0.40680
+split2_2018 seed=45 fold1 epoch=006 train_MSE_scaled=0.36191
+split2_2018 seed=45 fold1 epoch=007 train_MSE_scaled=0.30564
+split2_2018 seed=45 fold1 epoch=008 train_MSE_scaled=0.27443
+split2_2018 seed=45 fold1 epoch=009 train_MSE_scaled=0.23791
+split2_2018 seed=45 fold1 epoch=010 train_MSE_scaled=0.21547
+split2_2018 seed=45 fold1 epoch=011 train_MSE_scaled=0.20801
+split2_2018 seed=45 fold1 epoch=012 train_MSE_scaled=0.18868
+split2_2018 seed=45 fold1 epoch=013 train_MSE_scaled=0.16609
+split2_2018 seed=45 fold1 epoch=014 train_MSE_scaled=0.15017
+split2_2018 seed=45 fold1 epoch=015 train_MSE_scaled=0.15385
+split2_2018 seed=45 fold1 epoch=016 train_MSE_scaled=0.13773
+split2_2018 seed=45 fold1 epoch=017 train_MSE_scaled=0.19938
+split2_2018 seed=45 fold1 epoch=018 train_MSE_scaled=0.18918
+split2_2018 seed=45 fold1 epoch=019 train_MSE_scaled=0.20353
+split2_2018 seed=45 fold1 epoch=020 train_MSE_scaled=0.18488
+split2_2018 seed=45 fold1 epoch=021 train_MSE_scaled=0.17029
+split2_2018 seed=45 fold1 epoch=022 train_MSE_scaled=0.16700
+split2_2018 seed=45 fold1 epoch=023 train_MSE_scaled=0.15829
+split2_2018 seed=45 fold1 epoch=024 train_MSE_scaled=0.15314
+split2_2018 seed=45 fold1 epoch=025 train_MSE_scaled=0.14798
+split2_2018 seed=45 fold1 epoch=026 train_MSE_scaled=0.12977
+split2_2018 seed=45 fold1 epoch=027 train_MSE_scaled=0.11609
+split2_2018 seed=45 fold1 epoch=028 train_MSE_scaled=0.11099
+split2_2018 seed=45 fold1 epoch=029 train_MSE_scaled=0.16184
+split2_2018 seed=45 fold1 epoch=030 train_MSE_scaled=0.25674
+split2_2018 seed=45 fold1 epoch=031 train_MSE_scaled=0.16427
+split2_2018 seed=45 fold1 epoch=032 train_MSE_scaled=0.16662
+split2_2018 seed=45 fold2 epoch=001 train_MSE_scaled=0.90311
+split2_2018 seed=45 fold2 epoch=002 train_MSE_scaled=0.71032
+split2_2018 seed=45 fold2 epoch=003 train_MSE_scaled=0.59231
+split2_2018 seed=45 fold2 epoch=004 train_MSE_scaled=0.52078
+split2_2018 seed=45 fold2 epoch=005 train_MSE_scaled=0.46440
+split2_2018 seed=45 fold2 epoch=006 train_MSE_scaled=0.44722
+split2_2018 seed=45 fold2 epoch=007 train_MSE_scaled=0.43942
+split2_2018 seed=45 fold2 epoch=008 train_MSE_scaled=0.41497
+split2_2018 seed=45 fold2 epoch=009 train_MSE_scaled=0.39469
+split2_2018 seed=45 fold2 epoch=010 train_MSE_scaled=0.38691
+split2_2018 seed=45 fold2 epoch=011 train_MSE_scaled=0.38591
+split2_2018 seed=45 fold2 epoch=012 train_MSE_scaled=0.36562
+split2_2018 seed=45 fold2 epoch=013 train_MSE_scaled=0.38419
+split2_2018 seed=45 fold2 epoch=014 train_MSE_scaled=0.35712
+split2_2018 seed=45 fold2 epoch=015 train_MSE_scaled=0.34300
+split2_2018 seed=45 fold2 epoch=016 train_MSE_scaled=0.32783
+split2_2018 seed=45 fold2 epoch=017 train_MSE_scaled=0.31900
+split2_2018 seed=45 fold2 epoch=018 train_MSE_scaled=0.32992
+split2_2018 seed=45 fold2 epoch=019 train_MSE_scaled=0.34379
+split2_2018 seed=45 fold2 epoch=020 train_MSE_scaled=0.29162
+split2_2018 seed=45 fold2 epoch=021 train_MSE_scaled=0.28345
+split2_2018 seed=45 fold2 epoch=022 train_MSE_scaled=0.30592
+split2_2018 seed=45 fold2 epoch=023 train_MSE_scaled=0.25878
+split2_2018 seed=45 fold2 epoch=024 train_MSE_scaled=0.25393
+split2_2018 seed=45 fold2 epoch=025 train_MSE_scaled=0.24110
+split2_2018 seed=45 fold2 epoch=026 train_MSE_scaled=0.22285
+split2_2018 seed=45 fold2 epoch=027 train_MSE_scaled=0.21937
+split2_2018 seed=45 fold2 epoch=028 train_MSE_scaled=0.20758
+split2_2018 seed=45 fold2 epoch=029 train_MSE_scaled=0.21528
+split2_2018 seed=45 fold2 epoch=030 train_MSE_scaled=0.23361
+split2_2018 seed=45 fold2 epoch=031 train_MSE_scaled=0.25404
+split2_2018 seed=45 fold2 epoch=032 train_MSE_scaled=0.32988
+split2_2018 seed=45 fold3 epoch=001 train_MSE_scaled=0.85556
+split2_2018 seed=45 fold3 epoch=002 train_MSE_scaled=0.66913
+split2_2018 seed=45 fold3 epoch=003 train_MSE_scaled=0.52152
+split2_2018 seed=45 fold3 epoch=004 train_MSE_scaled=0.48343
+split2_2018 seed=45 fold3 epoch=005 train_MSE_scaled=0.45573
+split2_2018 seed=45 fold3 epoch=006 train_MSE_scaled=0.43397
+split2_2018 seed=45 fold3 epoch=007 train_MSE_scaled=0.41569
+split2_2018 seed=45 fold3 epoch=008 train_MSE_scaled=0.42010
+split2_2018 seed=45 fold3 epoch=009 train_MSE_scaled=0.39379
+split2_2018 seed=45 fold3 epoch=010 train_MSE_scaled=0.39838
+split2_2018 seed=45 fold3 epoch=011 train_MSE_scaled=0.38218
+split2_2018 seed=45 fold3 epoch=012 train_MSE_scaled=0.38037
+split2_2018 seed=45 fold3 epoch=013 train_MSE_scaled=0.33983
+split2_2018 seed=45 fold3 epoch=014 train_MSE_scaled=0.37755
+split2_2018 seed=45 fold3 epoch=015 train_MSE_scaled=0.34864
+split2_2018 seed=45 fold3 epoch=016 train_MSE_scaled=0.34495
+split2_2018 seed=45 fold3 epoch=017 train_MSE_scaled=0.36773
+split2_2018 seed=45 fold3 epoch=018 train_MSE_scaled=0.33373
+split2_2018 seed=45 fold3 epoch=019 train_MSE_scaled=0.32310
+split2_2018 seed=45 fold3 epoch=020 train_MSE_scaled=0.32599
+split2_2018 seed=45 fold3 epoch=021 train_MSE_scaled=0.28601
+split2_2018 seed=45 fold3 epoch=022 train_MSE_scaled=0.26924
+split2_2018 seed=45 fold3 epoch=023 train_MSE_scaled=0.27792
+split2_2018 seed=45 fold3 epoch=024 train_MSE_scaled=0.26263
+split2_2018 seed=45 fold3 epoch=025 train_MSE_scaled=0.37337
+split2_2018 seed=45 fold3 epoch=026 train_MSE_scaled=0.33041
+split2_2018 seed=45 fold3 epoch=027 train_MSE_scaled=0.28512
+split2_2018 seed=45 fold3 epoch=028 train_MSE_scaled=0.25771
+split2_2018 seed=45 fold3 epoch=029 train_MSE_scaled=0.23775
+split2_2018 seed=45 fold3 epoch=030 train_MSE_scaled=0.22237
+split2_2018 seed=45 fold3 epoch=031 train_MSE_scaled=0.20733
+split2_2018 seed=45 fold3 epoch=032 train_MSE_scaled=0.21530
+split2_2018 seed=45 LSTM test MAE=4.1436 RMSE=7.2807 -> /Users/jgyu480/Projects/IIE4123.01-00-LSTM-with-Attention/adaptive-weighted-LSTM-Attention/results/step1/split2_2018/seed_45
+split2_2018 seed=46 main epoch=001 train_MSE_scaled=0.86399 val_MSE_scaled=0.08759
+split2_2018 seed=46 main epoch=002 train_MSE_scaled=0.62629 val_MSE_scaled=0.06047
+split2_2018 seed=46 main epoch=003 train_MSE_scaled=0.51219 val_MSE_scaled=0.05546
+split2_2018 seed=46 main epoch=004 train_MSE_scaled=0.46213 val_MSE_scaled=0.06709
+split2_2018 seed=46 main epoch=005 train_MSE_scaled=0.45456 val_MSE_scaled=0.04958
+split2_2018 seed=46 main epoch=006 train_MSE_scaled=0.43035 val_MSE_scaled=0.04940
+split2_2018 seed=46 main epoch=007 train_MSE_scaled=0.41335 val_MSE_scaled=0.05610
+split2_2018 seed=46 main epoch=008 train_MSE_scaled=0.40590 val_MSE_scaled=0.05290
+split2_2018 seed=46 main epoch=009 train_MSE_scaled=0.39504 val_MSE_scaled=0.05034
+split2_2018 seed=46 main epoch=010 train_MSE_scaled=0.39688 val_MSE_scaled=0.04786
+split2_2018 seed=46 main epoch=011 train_MSE_scaled=0.37590 val_MSE_scaled=0.04567
+split2_2018 seed=46 main epoch=012 train_MSE_scaled=0.36020 val_MSE_scaled=0.04284
+split2_2018 seed=46 main epoch=013 train_MSE_scaled=0.37329 val_MSE_scaled=0.04595
+split2_2018 seed=46 main epoch=014 train_MSE_scaled=0.34810 val_MSE_scaled=0.04309
+split2_2018 seed=46 main epoch=015 train_MSE_scaled=0.33542 val_MSE_scaled=0.04407
+split2_2018 seed=46 main epoch=016 train_MSE_scaled=0.31756 val_MSE_scaled=0.04416
+split2_2018 seed=46 main epoch=017 train_MSE_scaled=0.35293 val_MSE_scaled=0.04805
+split2_2018 seed=46 main epoch=018 train_MSE_scaled=0.33315 val_MSE_scaled=0.04616
+split2_2018 seed=46 main epoch=019 train_MSE_scaled=0.29848 val_MSE_scaled=0.04569
+split2_2018 seed=46 main epoch=020 train_MSE_scaled=0.30191 val_MSE_scaled=0.04571
+split2_2018 seed=46 main epoch=021 train_MSE_scaled=0.28522 val_MSE_scaled=0.04512
+split2_2018 seed=46 main epoch=022 train_MSE_scaled=0.27971 val_MSE_scaled=0.05606
+split2_2018 seed=46 fold1 epoch=001 train_MSE_scaled=0.94748
+split2_2018 seed=46 fold1 epoch=002 train_MSE_scaled=0.69951
+split2_2018 seed=46 fold1 epoch=003 train_MSE_scaled=0.56809
+split2_2018 seed=46 fold1 epoch=004 train_MSE_scaled=0.48562
+split2_2018 seed=46 fold1 epoch=005 train_MSE_scaled=0.37837
+split2_2018 seed=46 fold1 epoch=006 train_MSE_scaled=0.29878
+split2_2018 seed=46 fold1 epoch=007 train_MSE_scaled=0.26742
+split2_2018 seed=46 fold1 epoch=008 train_MSE_scaled=0.23415
+split2_2018 seed=46 fold1 epoch=009 train_MSE_scaled=0.22792
+split2_2018 seed=46 fold1 epoch=010 train_MSE_scaled=0.19334
+split2_2018 seed=46 fold1 epoch=011 train_MSE_scaled=0.17943
+split2_2018 seed=46 fold1 epoch=012 train_MSE_scaled=0.15910
+split2_2018 seed=46 fold2 epoch=001 train_MSE_scaled=0.94330
+split2_2018 seed=46 fold2 epoch=002 train_MSE_scaled=0.79326
+split2_2018 seed=46 fold2 epoch=003 train_MSE_scaled=0.64454
+split2_2018 seed=46 fold2 epoch=004 train_MSE_scaled=0.55205
+split2_2018 seed=46 fold2 epoch=005 train_MSE_scaled=0.50096
+split2_2018 seed=46 fold2 epoch=006 train_MSE_scaled=0.45489
+split2_2018 seed=46 fold2 epoch=007 train_MSE_scaled=0.42923
+split2_2018 seed=46 fold2 epoch=008 train_MSE_scaled=0.41711
+split2_2018 seed=46 fold2 epoch=009 train_MSE_scaled=0.41137
+split2_2018 seed=46 fold2 epoch=010 train_MSE_scaled=0.38283
+split2_2018 seed=46 fold2 epoch=011 train_MSE_scaled=0.40056
+split2_2018 seed=46 fold2 epoch=012 train_MSE_scaled=0.37360
+split2_2018 seed=46 fold3 epoch=001 train_MSE_scaled=0.88668
+split2_2018 seed=46 fold3 epoch=002 train_MSE_scaled=0.69671
+split2_2018 seed=46 fold3 epoch=003 train_MSE_scaled=0.58138
+split2_2018 seed=46 fold3 epoch=004 train_MSE_scaled=0.64528
+split2_2018 seed=46 fold3 epoch=005 train_MSE_scaled=0.56191
+split2_2018 seed=46 fold3 epoch=006 train_MSE_scaled=0.49581
+split2_2018 seed=46 fold3 epoch=007 train_MSE_scaled=0.47125
+split2_2018 seed=46 fold3 epoch=008 train_MSE_scaled=0.45670
+split2_2018 seed=46 fold3 epoch=009 train_MSE_scaled=0.42887
+split2_2018 seed=46 fold3 epoch=010 train_MSE_scaled=0.40895
+split2_2018 seed=46 fold3 epoch=011 train_MSE_scaled=0.38987
+split2_2018 seed=46 fold3 epoch=012 train_MSE_scaled=0.38047
+split2_2018 seed=46 LSTM test MAE=4.1551 RMSE=6.9192 -> /Users/jgyu480/Projects/IIE4123.01-00-LSTM-with-Attention/adaptive-weighted-LSTM-Attention/results/step1/split2_2018/seed_46
+split2_2018 seed=42 C epoch=001 train=0.753558 val=0.075805
+split2_2018 seed=42 C epoch=002 train=0.521255 val=0.058474
+split2_2018 seed=42 C epoch=003 train=0.478728 val=0.053442
+split2_2018 seed=42 C epoch=004 train=0.450069 val=0.064721
+split2_2018 seed=42 C epoch=005 train=0.457739 val=0.054901
+split2_2018 seed=42 C epoch=006 train=0.442511 val=0.046229
+split2_2018 seed=42 C epoch=007 train=0.408641 val=0.047410
+split2_2018 seed=42 C epoch=008 train=0.407374 val=0.053453
+split2_2018 seed=42 C epoch=009 train=0.396977 val=0.046729
+split2_2018 seed=42 C epoch=010 train=0.379094 val=0.045328
+split2_2018 seed=42 C epoch=011 train=0.356889 val=0.045928
+split2_2018 seed=42 C epoch=012 train=0.338140 val=0.044739
+split2_2018 seed=42 C epoch=013 train=0.375779 val=0.045029
+split2_2018 seed=42 C epoch=014 train=0.377464 val=0.048027
+split2_2018 seed=42 C epoch=015 train=0.347510 val=0.049820
+split2_2018 seed=42 C epoch=016 train=0.364762 val=0.056260
+split2_2018 seed=42 C epoch=017 train=0.326809 val=0.053968
+split2_2018 seed=42 C epoch=018 train=0.334072 val=0.045388
+split2_2018 seed=42 C epoch=019 train=0.320270 val=0.046557
+split2_2018 seed=42 C epoch=020 train=0.405577 val=0.048858
+split2_2018 seed=42 C epoch=021 train=0.310286 val=0.044491
+split2_2018 seed=42 C epoch=022 train=0.328089 val=0.048576
+split2_2018 seed=42 C epoch=023 train=0.337910 val=0.051305
+split2_2018 seed=42 C epoch=024 train=0.353069 val=0.048207
+split2_2018 seed=42 C epoch=025 train=0.378886 val=0.048474
+split2_2018 seed=42 C epoch=026 train=0.306239 val=0.044728
+split2_2018 seed=42 C epoch=027 train=0.274964 val=0.045558
+split2_2018 seed=42 C epoch=028 train=0.260692 val=0.048829
+split2_2018 seed=42 C epoch=029 train=0.271979 val=0.045932
+split2_2018 seed=42 C epoch=030 train=0.451240 val=0.052358
+split2_2018 seed=42 C epoch=031 train=0.280894 val=0.048190
+split2_2018 seed=42 C k=20 test MAE=4.0736 RMSE=6.4074
+split2_2018 seed=43 C epoch=001 train=0.757439 val=0.081184
+split2_2018 seed=43 C epoch=002 train=0.618817 val=0.065092
+split2_2018 seed=43 C epoch=003 train=0.501075 val=0.053785
+split2_2018 seed=43 C epoch=004 train=0.542604 val=0.055659
+split2_2018 seed=43 C epoch=005 train=0.455373 val=0.061078
+split2_2018 seed=43 C epoch=006 train=0.437188 val=0.065867
+split2_2018 seed=43 C epoch=007 train=0.420721 val=0.050642
+split2_2018 seed=43 C epoch=008 train=0.395001 val=0.048061
+split2_2018 seed=43 C epoch=009 train=0.392124 val=0.043980
+split2_2018 seed=43 C epoch=010 train=0.412081 val=0.044630
+split2_2018 seed=43 C epoch=011 train=0.423961 val=0.045889
+split2_2018 seed=43 C epoch=012 train=0.396180 val=0.048728
+split2_2018 seed=43 C epoch=013 train=0.358556 val=0.043043
+split2_2018 seed=43 C epoch=014 train=0.393569 val=0.047079
+split2_2018 seed=43 C epoch=015 train=0.378432 val=0.045918
+split2_2018 seed=43 C epoch=016 train=0.373886 val=0.046400
+split2_2018 seed=43 C epoch=017 train=0.363377 val=0.051444
+split2_2018 seed=43 C epoch=018 train=0.323673 val=0.042687
+split2_2018 seed=43 C epoch=019 train=0.311995 val=0.042649
+split2_2018 seed=43 C epoch=020 train=0.314966 val=0.043864
+split2_2018 seed=43 C epoch=021 train=0.297206 val=0.042036
+split2_2018 seed=43 C epoch=022 train=0.299652 val=0.044817
+split2_2018 seed=43 C epoch=023 train=0.288428 val=0.044000
+split2_2018 seed=43 C epoch=024 train=0.370056 val=0.050199
+split2_2018 seed=43 C epoch=025 train=0.278232 val=0.046283
+split2_2018 seed=43 C epoch=026 train=0.234251 val=0.047650
+split2_2018 seed=43 C epoch=027 train=0.211952 val=0.043946
+split2_2018 seed=43 C epoch=028 train=0.180064 val=0.044149
+split2_2018 seed=43 C epoch=029 train=0.162122 val=0.044424
+split2_2018 seed=43 C epoch=030 train=0.203330 val=0.046215
+split2_2018 seed=43 C epoch=031 train=0.374275 val=0.050767
+split2_2018 seed=43 C k=20 test MAE=4.0800 RMSE=6.2797
+split2_2018 seed=44 C epoch=001 train=0.757898 val=0.071610
+split2_2018 seed=44 C epoch=002 train=0.574550 val=0.062627
+split2_2018 seed=44 C epoch=003 train=0.502177 val=0.059712
+split2_2018 seed=44 C epoch=004 train=0.486136 val=0.046595
+split2_2018 seed=44 C epoch=005 train=0.491727 val=0.053039
+split2_2018 seed=44 C epoch=006 train=0.462225 val=0.044148
+split2_2018 seed=44 C epoch=007 train=0.427019 val=0.049002
+split2_2018 seed=44 C epoch=008 train=0.392954 val=0.045272
+split2_2018 seed=44 C epoch=009 train=0.375985 val=0.044330
+split2_2018 seed=44 C epoch=010 train=0.405756 val=0.047481
+split2_2018 seed=44 C epoch=011 train=0.383093 val=0.045780
+split2_2018 seed=44 C epoch=012 train=0.364577 val=0.050194
+split2_2018 seed=44 C epoch=013 train=0.333112 val=0.042360
+split2_2018 seed=44 C epoch=014 train=0.342629 val=0.047941
+split2_2018 seed=44 C epoch=015 train=0.341337 val=0.044220
+split2_2018 seed=44 C epoch=016 train=0.307358 val=0.045623
+split2_2018 seed=44 C epoch=017 train=0.404598 val=0.054197
+split2_2018 seed=44 C epoch=018 train=0.324214 val=0.052400
+split2_2018 seed=44 C epoch=019 train=0.312859 val=0.050572
+split2_2018 seed=44 C epoch=020 train=0.281322 val=0.048466
+split2_2018 seed=44 C epoch=021 train=0.292155 val=0.045835
+split2_2018 seed=44 C epoch=022 train=0.345494 val=0.043537
+split2_2018 seed=44 C epoch=023 train=0.312627 val=0.042524
+split2_2018 seed=44 C k=10 test MAE=4.0743 RMSE=6.4835
+split2_2018 seed=45 C epoch=001 train=0.784658 val=0.082172
+split2_2018 seed=45 C epoch=002 train=0.541797 val=0.061320
+split2_2018 seed=45 C epoch=003 train=0.494166 val=0.076504
+split2_2018 seed=45 C epoch=004 train=0.501862 val=0.054862
+split2_2018 seed=45 C epoch=005 train=0.449803 val=0.051192
+split2_2018 seed=45 C epoch=006 train=0.439427 val=0.049406
+split2_2018 seed=45 C epoch=007 train=0.426306 val=0.046085
+split2_2018 seed=45 C epoch=008 train=0.424455 val=0.046170
+split2_2018 seed=45 C epoch=009 train=0.373395 val=0.048601
+split2_2018 seed=45 C epoch=010 train=0.367652 val=0.051630
+split2_2018 seed=45 C epoch=011 train=0.418758 val=0.043389
+split2_2018 seed=45 C epoch=012 train=0.354197 val=0.058937
+split2_2018 seed=45 C epoch=013 train=0.499450 val=0.049492
+split2_2018 seed=45 C epoch=014 train=0.430137 val=0.067091
+split2_2018 seed=45 C epoch=015 train=0.389381 val=0.045091
+split2_2018 seed=45 C epoch=016 train=0.355445 val=0.041669
+split2_2018 seed=45 C epoch=017 train=0.373034 val=0.072238
+split2_2018 seed=45 C epoch=018 train=0.378015 val=0.044448
+split2_2018 seed=45 C epoch=019 train=0.361575 val=0.048229
+split2_2018 seed=45 C epoch=020 train=0.341199 val=0.051892
+split2_2018 seed=45 C epoch=021 train=0.334152 val=0.057348
+split2_2018 seed=45 C epoch=022 train=0.316279 val=0.043697
+split2_2018 seed=45 C epoch=023 train=0.292579 val=0.051498
+split2_2018 seed=45 C epoch=024 train=0.243396 val=0.053531
+split2_2018 seed=45 C epoch=025 train=0.211064 val=0.047720
+split2_2018 seed=45 C epoch=026 train=0.178744 val=0.048487
+split2_2018 seed=45 C k=20 test MAE=4.0866 RMSE=6.8086
+split2_2018 seed=46 C epoch=001 train=0.809738 val=0.062445
+split2_2018 seed=46 C epoch=002 train=0.569045 val=0.051279
+split2_2018 seed=46 C epoch=003 train=0.487285 val=0.058846
+split2_2018 seed=46 C epoch=004 train=0.467221 val=0.072107
+split2_2018 seed=46 C epoch=005 train=0.484563 val=0.053994
+split2_2018 seed=46 C epoch=006 train=0.465979 val=0.050182
+split2_2018 seed=46 C epoch=007 train=0.479432 val=0.051016
+split2_2018 seed=46 C epoch=008 train=0.436092 val=0.054054
+split2_2018 seed=46 C epoch=009 train=0.425080 val=0.060594
+split2_2018 seed=46 C epoch=010 train=0.433979 val=0.058412
+split2_2018 seed=46 C epoch=011 train=0.405433 val=0.046959
+split2_2018 seed=46 C epoch=012 train=0.370176 val=0.049118
+split2_2018 seed=46 C epoch=013 train=0.357074 val=0.050019
+split2_2018 seed=46 C epoch=014 train=0.360246 val=0.054490
+split2_2018 seed=46 C epoch=015 train=0.340430 val=0.047371
+split2_2018 seed=46 C epoch=016 train=0.313854 val=0.046197
+split2_2018 seed=46 C epoch=017 train=0.289980 val=0.045611
+split2_2018 seed=46 C epoch=018 train=0.281063 val=0.049879
+split2_2018 seed=46 C epoch=019 train=0.257828 val=0.047350
+split2_2018 seed=46 C epoch=020 train=0.272676 val=0.047507
+split2_2018 seed=46 C epoch=021 train=0.231976 val=0.047535
+split2_2018 seed=46 C epoch=022 train=0.218803 val=0.045871
+split2_2018 seed=46 C epoch=023 train=0.198072 val=0.046611
+split2_2018 seed=46 C epoch=024 train=0.197680 val=0.046214
+split2_2018 seed=46 C epoch=025 train=0.192205 val=0.047126
+split2_2018 seed=46 C epoch=026 train=0.176601 val=0.047002
+split2_2018 seed=46 C epoch=027 train=0.174888 val=0.049087
+split2_2018 seed=46 C k=10 test MAE=4.3097 RMSE=6.9743
+split2_2018 val window=56 (min days used=56) MAE=2.9716 RMSE=4.8511 [22s]
+split2_2018 val window=84 (min days used=84) MAE=2.9641 RMSE=4.7896 [36s]
+split2_2018 val window=1092 (min days used=1092) MAE=2.4669 RMSE=4.0300 [190s]
+split2_2018 val window=1456 (min days used=1449) MAE=2.4656 RMSE=4.0398 [192s]
+split2_2018 val LEAR-ens MAE=2.5307 RMSE=4.2247
+split2_2018 test window=56 (min days used=56) MAE=4.2839 RMSE=7.0257 [21s]
+split2_2018 test window=84 (min days used=84) MAE=4.2351 RMSE=6.9805 [34s]
+split2_2018 test window=1092 (min days used=1092) MAE=3.6216 RMSE=6.2696 [176s]
+split2_2018 test window=1456 (min days used=1456) MAE=3.5639 RMSE=5.9737 [192s]
+split2_2018 test LEAR-ens MAE=3.7372 RMSE=6.3724
+split2_2018 val: 364 days, 5 seeds, models=['A', 'B', 'C', 'LEAR', 'LEAR_w56', 'LEAR_w84', 'LEAR_w1092', 'LEAR_w1456'], extreme-window days=5, volatile days=22
+split2_2018 test: 364 days, 5 seeds, models=['A', 'B', 'C', 'LEAR', 'LEAR_w56', 'LEAR_w84', 'LEAR_w1092', 'LEAR_w1456'], extreme-window days=25, volatile days=33
+-> /Users/jgyu480/Projects/IIE4123.01-00-LSTM-with-Attention/adaptive-weighted-LSTM-Attention/results/step1/split2_2018/export
+               A     B     C  LEAR  LEAR_w56  LEAR_w84  LEAR_w1092  LEAR_w1456
+A           1.00  0.76  0.92  0.42      0.36      0.39        0.42        0.50
+B           0.76  1.00  0.79  0.63      0.58      0.61        0.61        0.66
+C           0.92  0.79  1.00  0.62      0.55      0.58        0.61        0.66
+LEAR        0.42  0.63  0.62  1.00      0.97      0.98        0.97        0.96
+LEAR_w56    0.36  0.58  0.55  0.97      1.00      0.97        0.90        0.88
+LEAR_w84    0.39  0.61  0.58  0.98      0.97      1.00        0.91        0.90
+LEAR_w1092  0.42  0.61  0.61  0.97      0.90      0.91        1.00        0.98
+LEAR_w1456  0.50  0.66  0.66  0.96      0.88      0.90        0.98        1.00
+     combo     method  val_MAE  val_RMSE  val_daily_MSE  val_extreme_MAE  test_MAE  test_RMSE  test_daily_MSE  test_extreme_MAE
+LEAR+A+B+C     hourly 2.409485  3.992620      15.941017         8.755702  3.417487   5.583582       31.176389          9.404898
+  LEAR+A+B     hourly 2.410734  3.993860      15.950915         8.745660  3.421486   5.588915       31.235975          9.430719
+  LEAR+A+C     hourly 2.406961  3.994107      15.952895         8.750479  3.416570   5.584809       31.190090          9.381111
+    LEAR+A     hourly 2.408324  3.995547      15.964396         8.744932  3.420975   5.590097       31.249182          9.400796
+    LEAR+A  attention 2.424987  4.016990      16.136206         8.715821  3.455624   5.739544       32.942364          9.734411
+  LEAR+A+C  attention 2.426523  4.018171      16.145694         8.731419  3.452120   5.724360       32.768294          9.697711
+  LEAR+A+B  attention 2.428651  4.021792      16.174811         8.769656  3.444178   5.667850       32.124518          9.619829
+LEAR+A+B+C  attention 2.430044  4.022831      16.183171         8.781003  3.441948   5.659481       32.029728          9.594570
+LEAR+A+B+C volatility 2.442587  4.030359      16.243796         8.803943  3.443339   5.581236       31.150200          9.618838
+  LEAR+A+B volatility 2.442720  4.030643      16.246083         8.800689  3.443299   5.580380       31.140642          9.614044
+완료: 35개 조합 → results/ensemble35_pjm2018/ensemble35_scores.csv

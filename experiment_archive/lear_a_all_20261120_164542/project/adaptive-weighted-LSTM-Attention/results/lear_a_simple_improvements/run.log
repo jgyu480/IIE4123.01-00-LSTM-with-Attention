@@ -1,0 +1,20 @@
+기준: 원래 저장된 OriginalRecent
+{
+  "MAE": 3.376507282386465,
+  "RMSE": 5.522583202775918,
+  "bias_pred_minus_actual": 0.05400390745355271
+}
+분석 날짜: 2017-12-26 ~ 2018-12-24
+設定選択 122日 / BOA設定選択 91日 / 検証holdout 91日 / test 364日
+공통 기준은 재현 Recent, 별도 비교 기준은 OriginalRecent입니다.
+
+[1/4] 하루 수준·시간대별 모양 보정
+[선택] LevelShape_MAE: {'robust': True, 'level_window': 7, 'shape_window': 14, 'level_strength': 0.5, 'shape_strength': 0.5}
+[선택] LevelShape_RMSE: {'robust': True, 'level_window': 7, 'shape_window': 14, 'level_strength': 0.5, 'shape_strength': 0.5}
+
+[2/4] 하루·6시간 평균 회귀와 곡선 조정
+Traceback (most recent call last):
+  File "/Users/jgyu480/Projects/IIE4123.01-00-LSTM-with-Attention/adaptive-weighted-LSTM-Attention/results/lear_a_simple_improvements/run.py", line 187, in <module>
+    aggregate_x[d] = vector
+    ~~~~~~~~~~~^^^
+ValueError: could not broadcast input array from shape (46,) into shape (50,)

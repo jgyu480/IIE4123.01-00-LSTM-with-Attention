@@ -1,0 +1,84 @@
+{
+  "split": "split2_2018",
+  "seed": 46,
+  "data_sha256": "8596cff7a87cf47f9ee2215bd2af9fc8d6950d57339de9e06c87bad2efd407c6",
+  "days": {
+    "train": 1449,
+    "val": 364,
+    "test": 364,
+    "train_first": "2013-01-08",
+    "val_first": "2016-12-27",
+    "test_first": "2017-12-26",
+    "test_last": "2018-12-24"
+  },
+  "main": {
+    "best_epoch": 12,
+    "best_val_MSE_scaled": 0.04284131364477825
+  },
+  "folds": [
+    {
+      "fold": 1,
+      "fit_days": 357,
+      "fit_first": "2013-01-08",
+      "fit_last": "2013-12-30",
+      "block_first": "2013-12-31",
+      "block_last": "2014-12-29"
+    },
+    {
+      "fold": 2,
+      "fit_days": 721,
+      "fit_first": "2013-01-08",
+      "fit_last": "2014-12-29",
+      "block_first": "2014-12-30",
+      "block_last": "2015-12-28"
+    },
+    {
+      "fold": 3,
+      "fit_days": 1085,
+      "fit_first": "2013-01-08",
+      "fit_last": "2015-12-28",
+      "block_first": "2015-12-29",
+      "block_last": "2016-12-26"
+    }
+  ],
+  "high_threshold": 52.82328489999998,
+  "scaling_main": {
+    "mean": [
+      31.785060843821547,
+      91166.22255608975,
+      11417.675666781135
+    ],
+    "std": [
+      22.29916664842477,
+      16409.879162634308,
+      2214.586717744887
+    ]
+  },
+  "test_LSTM": {
+    "MAE": 4.155142817424034,
+    "RMSE": 6.919234749403171
+  },
+  "residual_definition": "actual - prediction, $/MWh; train-period residuals from fold models (OOF)",
+  "args": {
+    "splits": "['split2_2018']",
+    "seeds": "[42, 43, 44, 45, 46]",
+    "tag": "step1",
+    "csv": "/Users/jgyu480/Projects/IIE4123.01-00-LSTM-with-Attention/PJM_error_analysis/data/PJM.csv",
+    "epochs": "100",
+    "patience": "10",
+    "batch_size": "32",
+    "lr": "0.001",
+    "block_days": "364",
+    "min_train_days": "300",
+    "device": "cpu",
+    "threads": "4",
+    "out": "/Users/jgyu480/Projects/IIE4123.01-00-LSTM-with-Attention/adaptive-weighted-LSTM-Attention/results/step1"
+  },
+  "versions": {
+    "torch": "2.15.0",
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "python": "3.13.9"
+  },
+  "device": "cpu"
+}
