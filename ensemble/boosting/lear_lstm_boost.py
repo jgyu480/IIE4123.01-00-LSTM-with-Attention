@@ -18,7 +18,11 @@ Protocol (same split as the project; test days never used for any choice):
   the lower validation RMSE is the main model ("lstm_boost").
 Reported against LEAR, soft voting valw(A + LEAR_S + LEAR_L) and tree boosting (lear_tree_boost.py).
 
+--select-frac 0.5: the same, but every choice uses only the first half of the validation year, so the
+second half is out-of-sample too (input for ensemble/boa/boa_lstm.py).
+
 Output: ensemble/boosting/results/<market>/<split>/lstm/predictions_{val,test}.csv, summary.json
+        (lstm_val0.5/ with --select-frac 0.5)
 """
 import argparse
 import json
@@ -115,21 +119,24 @@ def run(market, split, args, device):
     tr, va, te = (torch.from_numpy(day[part == k]) for k in ["train", "val", "test"])
     nv, nt = len(va), len(te)
     rv = (truth - lear["ens"])[part == "val"]
+    k = int(nv * args.select_frac)                            # selection uses only the first k validation days
+    va_sel, rv_sel = va[:k], rv[:k]
 
     runs = {}
     for loss in args.losses:
         pv, pt, info = [], [], []
         for seed in range(args.seeds):
-            model, inf = train_one(T, tr, va, seed, loss, device, args)
+            model, inf = train_one(T, tr, va_sel, seed, loss, device, args)
             pv.append(predict(model, T, va, device) * ps)
             pt.append(predict(model, T, te, device) * ps)
             info.append(inf)
             print(f"  {market} {split} {loss} seed={seed} best_epoch={inf['best_epoch']} "
-                  f"val_RMSE(residual)={np.sqrt(((rv - pv[-1]) ** 2).mean()):.3f} [{time.time() - t0:.0f}s]", flush=True)
+                  f"val_RMSE(residual)={np.sqrt(((rv_sel - pv[-1][:k]) ** 2).mean()):.3f} [{time.time() - t0:.0f}s]",
+                  flush=True)
         pv, pt = np.mean(pv, 0), np.mean(pt, 0)               # seed average
-        c = float(min(tree.SHRINK, key=lambda s: ((rv - s * pv) ** 2).mean()))
+        c = float(min(tree.SHRINK, key=lambda s: ((rv_sel - s * pv[:k]) ** 2).mean()))
         runs[loss] = {"pv": pv, "pt": pt, "c": c, "seeds": info,
-                      "val_RMSE": float(np.sqrt(((rv - c * pv) ** 2).mean()))}
+                      "val_RMSE": float(np.sqrt(((rv_sel - c * pv[:k]) ** 2).mean()))}
     main = min(runs, key=lambda k: runs[k]["val_RMSE"])
 
     L_val, L_test = lear["ens"][part == "val"], lear["ens"][part == "test"]
@@ -169,7 +176,7 @@ def run(market, split, args, device):
             b = metrics.block_bootstrap(f(P["lstm_boost"] - y_test), f(P[ref] - y_test), n_boot=args.n_boot)
             boots.append({"model": "lstm_boost", "vs": ref, "loss": loss, **b})
 
-    out = HERE / "results" / market / split / "lstm"
+    out = HERE / "results" / market / split / ("lstm" if args.select_frac == 1 else f"lstm_val{args.select_frac:g}")
     out.mkdir(parents=True, exist_ok=True)
     for name, days_p, base in [("val", day[part == "val"], L_val), ("test", day[part == "test"], L_test)]:
         stamps = (m.days.values[days_p][:, None] + np.arange(24) * np.timedelta64(1, "h")).ravel()
@@ -208,6 +215,10 @@ def main():
     p.add_argument("--batch", type=int, default=32)
     p.add_argument("--lr", type=float, default=1e-3)
     p.add_argument("--n-boot", type=int, default=5000)
+    p.add_argument("--select-frac", type=float, default=1.0,
+                   help="early stopping, c and loss chosen on this first fraction of the validation days only; "
+                        "0.5 keeps the second half out-of-sample for an online combiner such as BOA "
+                        "(output folder lstm_val0.5)")
     p.add_argument("--device", default="cuda", choices=["cuda", "cpu"])
     p.add_argument("--threads", type=int, default=4)
     args = p.parse_args()
