@@ -1,0 +1,145 @@
+{
+  "market": "PJM",
+  "split": "split2_2018",
+  "input": "/Users/jgyu480/1_school/26-2/PJM_전기요금예측/experiment_archive/lear_a_all_20261120_164542/project/adaptive-weighted-LSTM-Attention/results/step1/split2_2018/export",
+  "experts": [
+    "TrainingRecent",
+    "MeanError28_half",
+    "LevelShape_RMSE",
+    "Reconcile_RMSE",
+    "BiasMix_RMSE"
+  ],
+  "repo_commit": "3e5c1b273a3763538e116e33ff89bd57a93acf9f",
+  "input_sha256": {
+    "val": "aa270cab0f67f1d40706f3f2129ef789572cf4debcae0ab55f3dc85354c6385d",
+    "test": "b2fe826a44eea21e1f703e7b6de835f84b1c93eb566452f0193c8ead198adcdd"
+  },
+  "base_configs": {
+    "TrainingRecent_beta_test_mean": null,
+    "LevelShape_MAE": {
+      "robust": false,
+      "level_window": 7,
+      "shape_window": 14,
+      "level_strength": 0.5,
+      "shape_strength": 0.5
+    },
+    "LevelShape_RMSE": {
+      "robust": false,
+      "level_window": 7,
+      "shape_window": 14,
+      "level_strength": 0.5,
+      "shape_strength": 0.5
+    },
+    "Reconcile_MAE": {
+      "mode": "daily_and_6hour",
+      "window": 1092,
+      "ridge_alpha": 10.0,
+      "rho": 10.0
+    },
+    "Reconcile_RMSE": {
+      "mode": "daily_and_6hour",
+      "window": 1092,
+      "ridge_alpha": 10.0,
+      "rho": 10.0
+    },
+    "BiasMix_MAE": {
+      "window": 14,
+      "regularization": 1.0,
+      "hour_groups": 4
+    },
+    "BiasMix_RMSE": {
+      "window": 14,
+      "regularization": 1.0,
+      "hour_groups": 4
+    }
+  },
+  "residual_configs": {
+    "TrainingRecent": {
+      "loss": "l1",
+      "c": 0.7,
+      "seed_count": 5
+    },
+    "MeanError28_half": {
+      "loss": "mse",
+      "c": 0.7,
+      "seed_count": 5
+    },
+    "LevelShape_RMSE": {
+      "loss": "l1",
+      "c": 0.5,
+      "seed_count": 5
+    },
+    "Reconcile_RMSE": {
+      "loss": "l1",
+      "c": 0.8,
+      "seed_count": 5
+    },
+    "BiasMix_RMSE": {
+      "loss": "l1",
+      "c": 0.7,
+      "seed_count": 5
+    }
+  },
+  "boa_configs": {
+    "BOA5_control": {
+      "loss": "MSE",
+      "hour_groups": 1
+    },
+    "BOA5_each_residual": {
+      "loss": "MSE",
+      "hour_groups": 1
+    }
+  },
+  "protocol": {
+    "warm": [
+      0,
+      60
+    ],
+    "base_select": [
+      60,
+      120
+    ],
+    "residual_train": [
+      60,
+      182
+    ],
+    "residual_select": [
+      182,
+      243
+    ],
+    "boa_select": [
+      243,
+      304
+    ],
+    "holdout": [
+      304,
+      364
+    ]
+  },
+  "limitations": [
+    "Residual training uses 122 validation days; historical OOF training is not included.",
+    "Base configurations are selected inside residual training, so residual training inputs are not strict OOF.",
+    "The original five use RMSE-selected correction configurations; loss and shrinkage are selected by residual-selection RMSE.",
+    "This control uses the same revised time boundaries; it is not a reproduction of the previously reported BOA5."
+  ],
+  "args": {
+    "repo": "/Users/jgyu480/1_school/26-2/PJM_전기요금예측",
+    "pull": false,
+    "market": "PJM",
+    "split": "split2_2018",
+    "input_dir": null,
+    "output_dir": "/Users/jgyu480/1_school/26-2/PJM_전기요금예측/ensemble/boa/results/PJM/split2_2018/five_individual_residual_20261121_112550",
+    "device": "cpu",
+    "seeds": 5,
+    "epochs": 100,
+    "patience": 10,
+    "batch": 32,
+    "lr": 0.001,
+    "threads": 4,
+    "n_boot": 5000,
+    "losses": [
+      "mse",
+      "l1"
+    ]
+  }
+}

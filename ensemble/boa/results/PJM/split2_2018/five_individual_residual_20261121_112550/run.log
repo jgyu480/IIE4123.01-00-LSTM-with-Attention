@@ -1,0 +1,77 @@
+Repo: /Users/jgyu480/1_school/26-2/PJM_전기요금예측
+Input: /Users/jgyu480/1_school/26-2/PJM_전기요금예측/experiment_archive/lear_a_all_20261120_164542/project/adaptive-weighted-LSTM-Attention/results/step1/split2_2018/export
+Output: /Users/jgyu480/1_school/26-2/PJM_전기요금예측/ensemble/boa/results/PJM/split2_2018/five_individual_residual_20261121_112550
+검증 구간: 0:60 준비 / 60:120 기존 보정 선택 / 60:182 잔차 학습 / 182:243 잔차 선택 / 243:304 BOA 선택 / 304:364 확인
+기존 보정 선택 구간은 잔차 학습 구간 안에 포함됩니다. 잔차 선택·BOA·확인·테스트 구간은 이후 날짜입니다.
+TrainingRecent mse seed=0 epoch=9
+TrainingRecent mse seed=1 epoch=4
+TrainingRecent mse seed=2 epoch=1
+TrainingRecent mse seed=3 epoch=8
+TrainingRecent mse seed=4 epoch=1
+TrainingRecent l1 seed=0 epoch=6
+TrainingRecent l1 seed=1 epoch=4
+TrainingRecent l1 seed=2 epoch=7
+TrainingRecent l1 seed=3 epoch=6
+TrainingRecent l1 seed=4 epoch=5
+Selected TrainingRecent: l1, c=0.7
+MeanError28_half mse seed=0 epoch=2
+MeanError28_half mse seed=1 epoch=2
+MeanError28_half mse seed=2 epoch=1
+MeanError28_half mse seed=3 epoch=1
+MeanError28_half mse seed=4 epoch=1
+MeanError28_half l1 seed=0 epoch=1
+MeanError28_half l1 seed=1 epoch=1
+MeanError28_half l1 seed=2 epoch=1
+MeanError28_half l1 seed=3 epoch=1
+MeanError28_half l1 seed=4 epoch=1
+Selected MeanError28_half: mse, c=0.7
+LevelShape_RMSE mse seed=0 epoch=2
+LevelShape_RMSE mse seed=1 epoch=2
+LevelShape_RMSE mse seed=2 epoch=1
+LevelShape_RMSE mse seed=3 epoch=1
+LevelShape_RMSE mse seed=4 epoch=1
+LevelShape_RMSE l1 seed=0 epoch=2
+LevelShape_RMSE l1 seed=1 epoch=1
+LevelShape_RMSE l1 seed=2 epoch=2
+LevelShape_RMSE l1 seed=3 epoch=1
+LevelShape_RMSE l1 seed=4 epoch=1
+Selected LevelShape_RMSE: l1, c=0.5
+Reconcile_RMSE mse seed=0 epoch=7
+Reconcile_RMSE mse seed=1 epoch=4
+Reconcile_RMSE mse seed=2 epoch=1
+Reconcile_RMSE mse seed=3 epoch=8
+Reconcile_RMSE mse seed=4 epoch=1
+Reconcile_RMSE l1 seed=0 epoch=5
+Reconcile_RMSE l1 seed=1 epoch=6
+Reconcile_RMSE l1 seed=2 epoch=4
+Reconcile_RMSE l1 seed=3 epoch=7
+Reconcile_RMSE l1 seed=4 epoch=5
+Selected Reconcile_RMSE: l1, c=0.8
+BiasMix_RMSE mse seed=0 epoch=2
+BiasMix_RMSE mse seed=1 epoch=2
+BiasMix_RMSE mse seed=2 epoch=1
+BiasMix_RMSE mse seed=3 epoch=1
+BiasMix_RMSE mse seed=4 epoch=1
+BiasMix_RMSE l1 seed=0 epoch=5
+BiasMix_RMSE l1 seed=1 epoch=3
+BiasMix_RMSE l1 seed=2 epoch=7
+BiasMix_RMSE l1 seed=3 epoch=5
+BiasMix_RMSE l1 seed=4 epoch=5
+Selected BiasMix_RMSE: l1, c=0.7
+                    model  holdout_MAE  holdout_RMSE  test_MAE  test_RMSE
+                     LEAR       2.6701        3.5993    3.7372     6.3724
+           TrainingRecent       2.4150        3.3029    3.4027     5.5679
+         MeanError28_half       2.3693        3.2726    3.3716     5.5398
+          LevelShape_RMSE       2.3480        3.2436    3.3636     5.5548
+           Reconcile_RMSE       2.4489        3.3650    3.3999     5.5062
+             BiasMix_RMSE       2.3858        3.2751    3.4126     5.6578
+  Residual:TrainingRecent       2.4957        3.3697    3.4257     5.6039
+Residual:MeanError28_half       2.3884        3.2762    3.3768     5.5389
+ Residual:LevelShape_RMSE       2.3453        3.2454    3.3625     5.5576
+  Residual:Reconcile_RMSE       2.4809        3.4170    3.4239     5.5358
+    Residual:BiasMix_RMSE       2.4272        3.3159    3.4195     5.6718
+                    Mean5       2.3667        3.2635    3.3543     5.5186
+            Mean5Residual       2.3984        3.2902    3.3632     5.5347
+             BOA5_control       2.3496        3.2445    3.3583     5.5477
+       BOA5_each_residual       2.3517        3.2498    3.3572     5.5506
+완료: /Users/jgyu480/1_school/26-2/PJM_전기요금예측/ensemble/boa/results/PJM/split2_2018/five_individual_residual_20261121_112550
